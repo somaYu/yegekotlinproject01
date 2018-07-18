@@ -1,5 +1,9 @@
 package com.example.administrator.mykotlin.extend
 
+import android.content.Context
+import android.view.View
+import android.widget.Toast
+
 /**
  * Created by Administrator on 2018\4\10 0010.
  * Kotlin的扩展函数
@@ -9,4 +13,42 @@ package com.example.administrator.mykotlin.extend
  * 创建方式类似于java的静态方法
  * 有一个类型限制 只有这个类型才能调用这个方法
  */
+
+fun Context.myToast(s: String, t: Int = Toast.LENGTH_SHORT) {
+
+    Toast.makeText(getApplicationContext(), s, t).show()
+
+}
+
+// 搞到view的成员变量里
+fun View.myVisible() {
+    visibility = View.VISIBLE
+}
+
+fun View.myInVisible() {
+    visibility = View.INVISIBLE
+}
+
+fun encodeMyCookie(list: List<String>): String {
+
+    var sb = StringBuilder()
+    var set = HashSet<String>()
+
+    // kotlin里的方法
+    list.map {
+
+    }
+
+    val it = set.iterator()
+
+    while (it.hasNext()) {
+        val next = it.next()
+
+        sb.append(next)
+    }
+
+    return sb.toString()
+
+}
+
 

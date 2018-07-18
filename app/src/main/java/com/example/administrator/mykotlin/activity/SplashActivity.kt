@@ -1,4 +1,4 @@
-package com.example.administrator.mykotlin.ui.activity
+package com.example.administrator.mykotlin.activity
 
 import android.app.Activity
 
@@ -8,4 +8,6 @@ import android.app.Activity
 
 // 孙悟空到此一游002
 class SplashActivity : Activity() {
+
+
 }
