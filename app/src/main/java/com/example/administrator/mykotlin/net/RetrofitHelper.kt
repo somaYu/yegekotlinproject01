@@ -2,7 +2,7 @@ package com.example.administrator.mykotlin.net
 
 import com.example.administrator.mykotlin.base.Preference
 import com.example.administrator.mykotlin.constant.Constant
-import com.example.administrator.mykotlin.extend.encodeCookie
+import com.example.administrator.mykotlin.extend.encodeMyCookie
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -14,25 +14,26 @@ import java.util.concurrent.TimeUnit
  * Created by Administrator on 2018\4\10 0010.
  * 构建为单列模式
  */
-class RetrofitHelper private constructor(){
+class RetrofitHelper private constructor() {
 
-    private  val TAG = "RetrofitHelper"
-    private  val CONTENT_PRE = "OkHttp: "
-    private  val SAVE_USER_LOGIN_KEY = "user/login"
-    private  val SAVE_USER_REGISTER_KEY = "user/register"
-    private  val SET_COOKIE_KEY = "set-cookie"
-    private  val COOKIE_NAME = "Cookie"
-    private  val CONNECT_TIMEOUT = 30L
-    private  val READ_TIMEOUT = 10L
+    private val TAG = "RetrofitHelper"
+    private val CONTENT_PRE = "OkHttp: "
+    private val SAVE_USER_LOGIN_KEY = "user/login"
+    private val SAVE_USER_REGISTER_KEY = "user/register"
+    private val SET_COOKIE_KEY = "set-cookie"
+    private val COOKIE_NAME = "Cookie"
+    private val CONNECT_TIMEOUT = 30L
+    private val READ_TIMEOUT = 10L
+
     //kotlin的单列实现
     companion object {
-        val retrofitHelper:RetrofitHelper by lazy { RetrofitHelper() }
+        val retrofitHelper: RetrofitHelper by lazy { RetrofitHelper() }
     }
 
-    var retrofitService= getServer(Constant.REQUEST_BASE_URL,RetrofitService::class.java)
+    var retrofitService = getServer(Constant.REQUEST_BASE_URL, RetrofitService::class.java)
 
     //创建我们的retroiftservice
-   private fun <T>getServer(url:String,service:Class<T>):T=create(url).create(service)
+    private fun <T> getServer(url: String, service: Class<T>): T = create(url).create(service)
 
     private fun create(url: String): Retrofit {
         // 创建 okHttpClientBuilder
@@ -47,11 +48,11 @@ class RetrofitHelper private constructor(){
                 val domain = request.url().host()
                 // set-cookie maybe has multi, login to save cookie
                 if ((requestUrl.contains(SAVE_USER_LOGIN_KEY) || requestUrl.contains(
-                        SAVE_USER_REGISTER_KEY
-                ))
+                                SAVE_USER_REGISTER_KEY
+                        ))
                         && !response.headers(SET_COOKIE_KEY).isEmpty()) {
                     val cookies = response.headers(SET_COOKIE_KEY)
-                    val cookie = encodeCookie(cookies)
+                    val cookie = encodeMyCookie(cookies)
                     saveCookie(requestUrl, domain, cookie)
                 }
                 response
@@ -75,7 +76,7 @@ class RetrofitHelper private constructor(){
             if (Constant.INTERCEPTOR_ENABLE) {
                 // loggingInterceptor
                 addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
-//                    loge(TAG, CONTENT_PRE + it)
+                    //                    loge(TAG, CONTENT_PRE + it)
                 }).apply {
                     // log level
                     level = HttpLoggingInterceptor.Level.BODY

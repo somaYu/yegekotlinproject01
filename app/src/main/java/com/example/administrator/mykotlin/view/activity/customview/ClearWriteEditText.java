@@ -1,4 +1,4 @@
-package com.example.administrator.mykotlin.ui.activity.widget;
+package com.example.administrator.mykotlin.view.activity.customview;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

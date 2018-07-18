@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import com.example.administrator.mykotlin.R
-import com.example.administrator.mykotlin.ui.activity.WebActivity
+import com.example.administrator.mykotlin.view.activity.WebActivity
 import com.zhy.adapter.recyclerview.CommonAdapter
 import com.zhy.adapter.recyclerview.base.ViewHolder
 import top.jowanxu.wanandroidclient.bean.Datas

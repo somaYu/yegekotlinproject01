@@ -1,8 +1,8 @@
-package com.example.administrator.mykotlin.ui.activity
+package com.example.administrator.mykotlin.view.activity
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.example.administrator.mykotlin.R
 import kotlinx.android.synthetic.main.activity_second.*

@@ -1,4 +1,4 @@
-package com.example.administrator.mykotlin.ui.activity.fragment
+package com.example.administrator.mykotlin.view.activity.fragment
 
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.adapter.MyHomeAdapter
+import com.example.administrator.mykotlin.base.BaseFragment
 import com.example.administrator.mykotlin.iview.HomeView
 import com.example.administrator.mykotlin.persenter.HomePresenter
-import com.example.administrator.mykotlin.ui.activity.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import top.jowanxu.wanandroidclient.bean.Datas
 import top.jowanxu.wanandroidclient.bean.HomeListResponse
@@ -17,7 +17,7 @@ import top.jowanxu.wanandroidclient.bean.HomeListResponse
 /**
  * Created by Administrator on 2018\4\12 0012.
  */
-class HomeFragment:BaseFragment<HomePresenter>(),HomeView{
+class HomeFragment : BaseFragment<HomePresenter>(), HomeView {
     var homeList:HomeListResponse?=null
     var datas=ArrayList<Datas>()
     //服务器返回成功的显示

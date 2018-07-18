@@ -1,4 +1,4 @@
-package com.example.administrator.mykotlin.ui.activity.base
+package com.example.administrator.mykotlin.base
 
 import android.app.ProgressDialog
 import android.os.Bundle

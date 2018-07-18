@@ -1,23 +1,22 @@
-package com.example.administrator.mykotlin.ui.activity
+package com.example.administrator.mykotlin.view.activity
 
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.view.View
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.adapter.MyViewPagerAdapter
-import com.example.administrator.mykotlin.base.Preference
+import com.example.administrator.mykotlin.base.BaseActivity
 import com.example.administrator.mykotlin.base.SharedpresferenesUtils
 import com.example.administrator.mykotlin.persenter.ContentPresenter
-import com.example.administrator.mykotlin.ui.activity.base.BaseActivity
-import com.example.administrator.mykotlin.ui.activity.fragment.HomeFragment
-import com.example.administrator.mykotlin.ui.activity.fragment.TypeFragment
+import com.example.administrator.mykotlin.view.activity.fragment.HomeFragment
+import com.example.administrator.mykotlin.view.activity.fragment.TypeFragment
 import kotlinx.android.synthetic.main.activity_content.*
 import kotlinx.android.synthetic.main.include_content.*
 
 /**
  * Created by Administrator on 2018\4\12 0012.
  */
-class ContentActivity:BaseActivity<ContentPresenter>() {
+class ContentActivity : BaseActivity<ContentPresenter>() {
 
     var titles=ArrayList<String>()
     var fragmes=ArrayList<Fragment>()

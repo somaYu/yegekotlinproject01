@@ -50,7 +50,7 @@
                 android:orientation="horizontal">
 
 
-                <com.example.administrator.mykotlin.ui.activity.widget.ClearWriteEditText
+                <com.example.administrator.mykotlin.view.activity.customview.ClearWriteEditText
                     android:id="@+id/de_login_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                 android:orientation="horizontal">
 
 
-                <com.example.administrator.mykotlin.ui.activity.widget.ClearWriteEditText
+                <com.example.administrator.mykotlin.view.activity.customview.ClearWriteEditText
                     android:id="@+id/de_login_password"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"

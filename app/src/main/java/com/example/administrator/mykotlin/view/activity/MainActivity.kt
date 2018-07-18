@@ -1,13 +1,13 @@
-package com.example.administrator.mykotlin.ui.activity
+package com.example.administrator.mykotlin.view.activity
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.bean.Car
 import com.example.administrator.mykotlin.bean.Person
-import com.example.administrator.mykotlin.extend.toast
+import com.example.administrator.mykotlin.extend.myToast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.experimental.*
 import kotlinx.coroutines.experimental.android.UI
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         kotlin中扩展函数的
         使用
          */
-//        textView2.invisible()
+//        textView2.myInvisible()
 
         /*
         kotlin的点击事件的写法
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         private val onclicklisten=View.OnClickListener {View->
             when(View.id){
               R.id.button ->{
-                  toast("点击")
+                  myToast("点击")
 //                  startActivity(Intent(this,SecondActivity::class.java))
 //                  startActivityForResult(Intent(this,SecondActivity::class.java),0x11)
                   test()
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode==0x12){
-            toast("回调成功")
+            myToast("回调成功")
         }
     }
 
