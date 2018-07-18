@@ -7,7 +7,7 @@ import android.view.View
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.bean.Car
 import com.example.administrator.mykotlin.bean.Person
-import com.example.administrator.mykotlin.toast
+import com.example.administrator.mykotlin.extend.toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.experimental.*
 import kotlinx.coroutines.experimental.android.UI

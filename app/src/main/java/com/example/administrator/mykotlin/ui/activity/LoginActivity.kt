@@ -2,18 +2,15 @@ package com.example.administrator.mykotlin.ui.activity
 
 import android.content.Intent
 import android.os.Handler
-import android.preference.Preference
 import android.view.View
 import android.view.animation.AnimationUtils
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.base.SharedpresferenesUtils
 import com.example.administrator.mykotlin.iview.LoginView
-import com.example.administrator.mykotlin.persenter.BasePresenter
 import com.example.administrator.mykotlin.persenter.LoginPresenter
-import com.example.administrator.mykotlin.toast
+import com.example.administrator.mykotlin.extend.toast
 import com.example.administrator.mykotlin.ui.activity.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.item_home.*
 import top.jowanxu.wanandroidclient.bean.LoginResponse
 
 /**

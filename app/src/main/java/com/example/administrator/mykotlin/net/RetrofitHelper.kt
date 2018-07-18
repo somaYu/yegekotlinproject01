@@ -2,7 +2,7 @@ package com.example.administrator.mykotlin.net
 
 import com.example.administrator.mykotlin.base.Preference
 import com.example.administrator.mykotlin.constant.Constant
-import com.example.administrator.mykotlin.encodeCookie
+import com.example.administrator.mykotlin.extend.encodeCookie
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
