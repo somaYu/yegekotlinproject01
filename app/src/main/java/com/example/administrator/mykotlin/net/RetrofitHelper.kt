@@ -62,7 +62,7 @@ class RetrofitHelper private constructor() {
                 val request = it.request()
                 val builder = request.newBuilder()
                 val domain = request.url().host()
-                // get domain cookie
+                // getInstance domain cookie
                 if (domain.isNotEmpty()) {
                     val spDomain: String by Preference(domain, "")
                     val cookie: String = if (spDomain.isNotEmpty()) spDomain else ""

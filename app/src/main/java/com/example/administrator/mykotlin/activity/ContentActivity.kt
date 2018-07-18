@@ -6,10 +6,10 @@ import android.view.View
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.adapter.MyViewPagerAdapter
 import com.example.administrator.mykotlin.base.BaseActivity
-import com.example.administrator.mykotlin.base.SharedpresferenesUtils
 import com.example.administrator.mykotlin.fragment.HomeFragment
 import com.example.administrator.mykotlin.fragment.TypeFragment
 import com.example.administrator.mykotlin.persenter.ContentPresenter
+import com.example.administrator.mykotlin.util.MySpUtil
 import kotlinx.android.synthetic.main.activity_content.*
 import kotlinx.android.synthetic.main.include_content.*
 
@@ -38,7 +38,7 @@ class ContentActivity : BaseActivity<ContentPresenter>() {
         viewpager.adapter= MyViewPagerAdapter(supportFragmentManager,fragmes,titles)
         tablayout.setupWithViewPager(viewpager)
         //设置用户名
-        name.text=SharedpresferenesUtils.shared.get(this).getString("name","")
+        name.text = MySpUtil.instance.getInstance(this).getString("name", "")
         //退出登陆
         exit.setOnClickListener(onClickListener)
     }
@@ -47,7 +47,7 @@ class ContentActivity : BaseActivity<ContentPresenter>() {
         View->when(View.id){
         R.id.exit->{
             startActivity(Intent(this@ContentActivity,LoginActivity::class.java))
-            SharedpresferenesUtils.shared.get(this@ContentActivity).putBoolean("sign",false)
+            MySpUtil.instance.getInstance(this@ContentActivity).putBoolean("sign", false)
             finish()
         }
     }

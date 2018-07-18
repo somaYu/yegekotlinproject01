@@ -5,17 +5,14 @@ import android.os.Handler
 import android.os.Message
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.base.BaseActivity
-import com.example.administrator.mykotlin.base.SharedpresferenesUtils
 import com.example.administrator.mykotlin.persenter.BasePresenter
+import com.example.administrator.mykotlin.util.MySpUtil
 
 /**
  * Created by Administrator on 2018\4\13 0013.
  */
 
-// 孙悟空到此一游004
 class SplashActivity : BaseActivity<BasePresenter>() {
-
-    override fun getMyViewId(): Int = R.layout.activity_splash
 
     private var handler = object : Handler() {
 
@@ -23,8 +20,8 @@ class SplashActivity : BaseActivity<BasePresenter>() {
             super.handleMessage(msg)
             /*  @Suppress("UNUSED_VALUE")
               var isSign:Boolean by Preference("isSign",false)*/
-//            var isSign=SharedpresferenesUtils.shared.sharedPreferences?.getBoolean("sign",false)
-            var isSign = SharedpresferenesUtils.shared.get(this@SplashActivity).getBoolean("sign", false)
+//            var isSign=MySpUtil.instance.sharedPreferences?.getBoolean("sign",false)
+            var isSign = MySpUtil.instance.getInstance(this@SplashActivity).getBoolean("sign", false)
             if (isSign!!) {
                 startActivity(Intent(this@SplashActivity, ContentActivity::class.java))
                 finish()
@@ -33,6 +30,13 @@ class SplashActivity : BaseActivity<BasePresenter>() {
                 finish()
             }
         }
+    }
+
+//    override fun getMyViewId(): Int = R.layout.activity_splash
+
+    override fun getMyViewId(): Int {
+
+        return R.layout.activity_splash
     }
 
     override fun initMyPresenter() {
@@ -47,4 +51,5 @@ class SplashActivity : BaseActivity<BasePresenter>() {
             }
         }, 3500)
     }
+
 }

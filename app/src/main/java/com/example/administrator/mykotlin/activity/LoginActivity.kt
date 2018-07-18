@@ -6,10 +6,10 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.base.BaseActivity
-import com.example.administrator.mykotlin.base.SharedpresferenesUtils
 import com.example.administrator.mykotlin.extend.myToast
 import com.example.administrator.mykotlin.iview.LoginView
 import com.example.administrator.mykotlin.persenter.LoginPresenter
+import com.example.administrator.mykotlin.util.MySpUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import top.jowanxu.wanandroidclient.bean.LoginResponse
 
@@ -64,11 +64,11 @@ class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
           var pass:String by com.example.administrator.mykotlin.base.Preference("pass",de_login_password.text.toString())
           @Suppress("UNUSED_VALUE")
           com.example.administrator.mykotlin.base.Preference("isSign",true)*/
-//        SharedpresferenesUtils.shared.edit?.putBoolean("sign",true)
+//        MySpUtil.instance.edit?.putBoolean("sign",true)
         if (result?.data != null) {
-            SharedpresferenesUtils.shared.get(this).putBoolean("sign", true)
-            SharedpresferenesUtils.shared.get(this).putString("name", de_login_phone.text.toString().trim())
-            SharedpresferenesUtils.shared.get(this).putString("pass", de_login_password.text.toString().trim())
+            MySpUtil.instance.getInstance(this).putBoolean("sign", true)
+            MySpUtil.instance.getInstance(this).putString("name", de_login_phone.text.toString().trim())
+            MySpUtil.instance.getInstance(this).putString("pass", de_login_password.text.toString().trim())
             //跳转界面
             startActivity(Intent(this@LoginActivity, ContentActivity::class.java))
             finish()

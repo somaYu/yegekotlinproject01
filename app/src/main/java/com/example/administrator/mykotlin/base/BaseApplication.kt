@@ -10,6 +10,6 @@ class BaseApplication:Application() {
         super.onCreate()
         //初始化全局变量  保存数据
         Preference.setContext(this)
-//        SharedpresferenesUtils.shared.get(this)
+//        MySpUtil.instance.getInstance(this)
     }
 }
