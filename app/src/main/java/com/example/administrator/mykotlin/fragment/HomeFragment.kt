@@ -1,4 +1,4 @@
-package com.example.administrator.mykotlin.view.activity.fragment
+package com.example.administrator.mykotlin.fragment
 
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log

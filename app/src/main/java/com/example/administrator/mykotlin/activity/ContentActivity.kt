@@ -1,4 +1,4 @@
-package com.example.administrator.mykotlin.view.activity
+package com.example.administrator.mykotlin.activity
 
 import android.content.Intent
 import android.support.v4.app.Fragment
@@ -7,9 +7,9 @@ import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.adapter.MyViewPagerAdapter
 import com.example.administrator.mykotlin.base.BaseActivity
 import com.example.administrator.mykotlin.base.SharedpresferenesUtils
+import com.example.administrator.mykotlin.fragment.HomeFragment
+import com.example.administrator.mykotlin.fragment.TypeFragment
 import com.example.administrator.mykotlin.persenter.ContentPresenter
-import com.example.administrator.mykotlin.view.activity.fragment.HomeFragment
-import com.example.administrator.mykotlin.view.activity.fragment.TypeFragment
 import kotlinx.android.synthetic.main.activity_content.*
 import kotlinx.android.synthetic.main.include_content.*
 

@@ -1,5 +1,6 @@
-package com.example.administrator.mykotlin.view.activity.customview;
+package com.example.administrator.mykotlin.customview;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
@@ -19,6 +20,8 @@ import com.example.administrator.mykotlin.R;
  * Created by AMing on 15/11/2.
  * Company RongCloud
  */
+
+@SuppressLint("AppCompatCustomView")
 public class ClearWriteEditText extends EditText implements View.OnFocusChangeListener , TextWatcher {
 
     /**

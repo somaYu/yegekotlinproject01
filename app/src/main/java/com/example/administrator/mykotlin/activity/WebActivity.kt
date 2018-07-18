@@ -1,4 +1,4 @@
-package com.example.administrator.mykotlin.view.activity
+package com.example.administrator.mykotlin.activity
 
 import android.widget.FrameLayout
 import android.widget.LinearLayout
