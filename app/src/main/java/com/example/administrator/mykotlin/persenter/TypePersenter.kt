@@ -15,11 +15,11 @@ class TypePersenter(var view:TypeView):BasePresenter() {
         request.getType(this)
     }
 
-    override fun success(result: BaseResponse) {
-        view.typeSucces(result as TreeListResponse)
+    override fun mySuccess(response: BaseResponse) {
+        view.typeSucces(response as TreeListResponse)
     }
 
-    override fun faile(meassage: String?) {
-        view.typeFaile(meassage)
+    override fun myFail(error: String?) {
+        view.typeFaile(error)
     }
 }

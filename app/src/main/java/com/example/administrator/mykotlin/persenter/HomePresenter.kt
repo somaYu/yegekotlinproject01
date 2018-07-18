@@ -14,11 +14,12 @@ class HomePresenter(var view:HomeView):BasePresenter() {
         var request=HomeRequest()
         request.getHome(this,page)
     }
-    override fun success(result: BaseResponse) {
-        view.homeSuccess(result as HomeListResponse)
+
+    override fun mySuccess(response: BaseResponse) {
+        view.homeSuccess(response as HomeListResponse)
     }
 
-    override fun faile(meassage: String?) {
-        view.homeFaile(meassage)
+    override fun myFail(error: String?) {
+        view.homeFaile(error)
     }
 }

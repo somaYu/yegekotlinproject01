@@ -7,18 +7,24 @@ import com.example.administrator.mykotlin.persenter.BasePresenter
 /**
  * Created by Administrator on 2018\4\11 0011.
  */
-abstract class BaseActivity<T:BasePresenter>:AppCompatActivity(){
-    var mPreasenter:T?=null
+abstract class BaseActivity<T : BasePresenter> : AppCompatActivity() {
+
+    var basePreasenter: T? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getViewId())
-        initPresenter()
-        initData()
+
+        setContentView(getMyViewId())
+
+        initMyPresenter()
+
+        initMyData()
+
     }
 
-    abstract fun getViewId(): Int
+    abstract fun getMyViewId(): Int
 
-    abstract fun initPresenter()
+    abstract fun initMyPresenter()
 
-    abstract fun initData()
+    abstract fun initMyData()
 }

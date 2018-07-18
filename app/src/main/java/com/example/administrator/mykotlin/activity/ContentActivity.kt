@@ -20,13 +20,13 @@ class ContentActivity : BaseActivity<ContentPresenter>() {
 
     var titles=ArrayList<String>()
     var fragmes=ArrayList<Fragment>()
-    override fun getViewId(): Int =R.layout.activity_content
+    override fun getMyViewId(): Int = R.layout.activity_content
 
 
-    override fun initPresenter() {
+    override fun initMyPresenter() {
     }
 
-    override fun initData() {
+    override fun initMyData() {
         //toolbar设置标题
         toolbar.title="Kotlin Demo"
         //toolbar设置长actionbar

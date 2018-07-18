@@ -34,7 +34,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeView {
 
     //服务器返回失败的显示
     override fun homeFaile(meass: String?) {
-        Log.e("result","faile")
+        Log.e("result", "myFail")
     }
 
     override fun initPresneter() {

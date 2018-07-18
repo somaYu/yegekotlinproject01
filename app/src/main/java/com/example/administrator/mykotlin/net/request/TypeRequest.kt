@@ -18,10 +18,10 @@ class TypeRequest {
             typeTree=RetrofitHelper.retrofitHelper.retrofitService.getTypeTreeList()
             var result=typeTree?.await()
             result?:let {
-                listen.faile(Constant.RESULT_NULL)
+                listen.myFail(Constant.RESULT_NULL)
                 return@async
             }
-            listen.success(result)
+            listen.mySuccess(result)
         }
     }
 }

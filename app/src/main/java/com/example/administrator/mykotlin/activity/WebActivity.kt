@@ -12,12 +12,12 @@ import kotlinx.android.synthetic.main.activity_web.*
  * Created by Administrator on 2018\4\16 0016.
  */
 class WebActivity : BaseActivity<BasePresenter>() {
-    override fun getViewId(): Int= R.layout.activity_web
+    override fun getMyViewId(): Int = R.layout.activity_web
 
-    override fun initPresenter() {
+    override fun initMyPresenter() {
     }
 
-    override fun initData() {
+    override fun initMyData() {
        var url= intent.getStringExtra("url")
         var title=intent.getStringExtra("title")
         toolbar02.title=title

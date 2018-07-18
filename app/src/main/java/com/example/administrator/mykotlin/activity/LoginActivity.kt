@@ -17,13 +17,13 @@ import top.jowanxu.wanandroidclient.bean.LoginResponse
  * Created by Administrator on 2018\4\11 0011.
  */
 class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
-    override fun getViewId(): Int = R.layout.activity_login
+    override fun getMyViewId(): Int = R.layout.activity_login
 
-    override fun initPresenter() {
-        mPreasenter = LoginPresenter(this)
+    override fun initMyPresenter() {
+        basePreasenter = LoginPresenter(this)
     }
 
-    override fun initData() {
+    override fun initMyData() {
         //实现动画
         var handler = Handler()
         handler.postDelayed(object : Runnable {
@@ -42,9 +42,9 @@ class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
                 var name = de_login_phone.text.toString()
                 var pass = de_login_password.text.toString()
                 if (de_login_sign.text == "注册") {
-                    mPreasenter?.regist(name, pass)
+                    basePreasenter?.regist(name, pass)
                 } else {
-                    mPreasenter?.login(name, pass)
+                    basePreasenter?.login(name, pass)
                 }
 //                myToast("点击")
             }

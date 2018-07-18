@@ -21,10 +21,10 @@ class LoginRequest() {
             loginAsync = RetrofitHelper.retrofitHelper.retrofitService.login(username, password)
             val result = loginAsync?.await()
             result ?: let {
-                onLoginListener.faile(Constant.RESULT_NULL)
+                onLoginListener.myFail(Constant.RESULT_NULL)
                 return@async
             }
-            onLoginListener.success(result)
+            onLoginListener.mySuccess(result)
         }
     }
 

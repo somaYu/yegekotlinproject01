@@ -15,7 +15,7 @@ import com.example.administrator.mykotlin.persenter.BasePresenter
 // 孙悟空到此一游004
 class SplashActivity : BaseActivity<BasePresenter>() {
 
-    override fun getViewId(): Int = R.layout.activity_splash
+    override fun getMyViewId(): Int = R.layout.activity_splash
 
     private var handler = object : Handler() {
 
@@ -35,11 +35,11 @@ class SplashActivity : BaseActivity<BasePresenter>() {
         }
     }
 
-    override fun initPresenter() {
+    override fun initMyPresenter() {
 
     }
 
-    override fun initData() {
+    override fun initMyData() {
 
         handler.postDelayed(Runnable() {
             kotlin.run {

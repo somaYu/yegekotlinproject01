@@ -19,12 +19,12 @@ class LoginPresenter(var iview: LoginView) : BasePresenter() {
         request.regist(this, name, pass)
     }
 
-    override fun success(result: BaseResponse) {
-        iview.loginSuccess(result as LoginResponse)
+    override fun mySuccess(response: BaseResponse) {
+        iview.loginSuccess(response as LoginResponse)
     }
 
-    override fun faile(meassage: String?) {
-        iview.loginFaile(meassage)
+    override fun myFail(error: String?) {
+        iview.loginFaile(error)
     }
 
     fun successRegist(result: BaseResponse) {

@@ -19,10 +19,10 @@ class HomeRequest {
                 homeList=RetrofitHelper.retrofitHelper.retrofitService.getHomeList(page)
                 var result=homeList?.await()
                 result?:let{
-                homePresenter.faile(Constant.RESULT_NULL)
+                    homePresenter.myFail(Constant.RESULT_NULL)
                 return@async
             }
-            homePresenter.success(result)
+            homePresenter.mySuccess(result)
         }
     }
 }
