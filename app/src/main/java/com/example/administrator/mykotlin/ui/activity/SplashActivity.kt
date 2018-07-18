@@ -12,7 +12,7 @@ import com.example.administrator.mykotlin.ui.activity.base.BaseActivity
  * Created by Administrator on 2018\4\13 0013.
  */
 
-// 孙悟空到此一游003
+// 孙悟空到此一游004
 class SplashActivity:BaseActivity<BasePresenter>(){
     override fun getViewId(): Int= R.layout.activity_splash
     private var handler=object : Handler(){
