@@ -22,16 +22,22 @@ class MySpUtil private constructor() {
         return this
     }
 
-    fun getBoolean(k: String, v: Boolean): Boolean = sp?.getBoolean(k, v)!!
-
+    // return可以用=代替
+    // fun getString(k: String, v: String): String = sp?.getString(k, v)!!
     fun putBoolean(k: String, v: Boolean) {
         editor?.putBoolean(k, v)?.commit()
     }
 
-    fun getString(k: String, v: String): String = sp?.getString(k, v)!!
+    fun getBoolean(k: String, v: Boolean): Boolean {
+        return sp?.getBoolean(k, v)!!
+    }
 
     fun putString(k: String, v: String) {
         editor?.putString(k, v)?.commit()
+    }
+
+    fun getString(k: String, v: String): String {
+        return sp?.getString(k, v)!!
     }
 
 }

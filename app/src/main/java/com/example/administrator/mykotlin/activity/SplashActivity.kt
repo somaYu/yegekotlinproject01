@@ -21,14 +21,20 @@ class SplashActivity : BaseActivity<BasePresenter>() {
             /*  @Suppress("UNUSED_VALUE")
               var isSign:Boolean by Preference("isSign",false)*/
 //            var isSign=MySpUtil.instance.sharedPreferences?.getBoolean("sign",false)
-            var isSign = MySpUtil.instance.getInstance(this@SplashActivity).getBoolean("sign", false)
-            if (isSign!!) {
+
+//            var isSign = MySpUtil.instance.getInstance(this@SplashActivity).getBoolean("sign", false)
+            val instance = MySpUtil.instance.getInstance(this@SplashActivity)
+            val b = instance.getBoolean("sign", false)
+
+//            if (b!!) {
+            if (b) {
                 startActivity(Intent(this@SplashActivity, ContentActivity::class.java))
                 finish()
             } else {
                 startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
                 finish()
             }
+
         }
     }
 
@@ -49,7 +55,8 @@ class SplashActivity : BaseActivity<BasePresenter>() {
             kotlin.run {
                 handler.sendEmptyMessage(0)
             }
-        }, 3500)
+        }
+                , 3500)
     }
 
 }
