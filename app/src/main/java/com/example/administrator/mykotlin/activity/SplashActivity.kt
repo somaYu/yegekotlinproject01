@@ -1,5 +1,6 @@
 package com.example.administrator.mykotlin.activity
 
+import android.content.Intent
 import android.os.Handler
 import android.os.Message
 import com.example.administrator.mykotlin.R
@@ -15,6 +16,7 @@ class SplashActivity : BaseActivity<BasePresenter>() {
 
     // 这是特么什么语法
     // 匿名类就是这个写法
+    // 没有new直接类名
     var handler = object : Handler() {
 
         override fun handleMessage(msg: Message?) {
@@ -22,8 +24,14 @@ class SplashActivity : BaseActivity<BasePresenter>() {
 
             val instance = MySpUtil.instance.getInstance(this@SplashActivity)
 
+            val b = instance.getBoolean("sign", false)
 
-
+            if (b) {
+                startActivity(Intent(this@SplashActivity, ContentActivity::class.java))
+            } else {
+                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+            }
+            finish()
 
         }
 
@@ -35,11 +43,17 @@ class SplashActivity : BaseActivity<BasePresenter>() {
     }
 
     override fun initMyPresenter() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initMyData() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+        handler.postDelayed(Runnable {
+            kotlin.run {
+                handler.sendEmptyMessage(0)
+            }
+        }
+                , 3000)
+
     }
 
 

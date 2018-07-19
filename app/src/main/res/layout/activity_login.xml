@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/de_frm_backgroud"
@@ -15,7 +15,7 @@
             android:layout_marginLeft="-50dp"
             android:layout_marginRight="-300dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/de_bg" />
+            android:src="@drawable/de_bg"/>
 
     </FrameLayout>
 
@@ -28,10 +28,10 @@
             android:id="@+id/de_login_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="91dip"
-            android:src="@mipmap/ic_launcher_round" />
+            android:src="@mipmap/ic_launcher_round"
+            android:visibility="invisible"/>
 
 
         <LinearLayout
@@ -50,7 +50,7 @@
                 android:orientation="horizontal">
 
 
-                <com.example.administrator.mykotlin.activity.widget.ClearWriteEditText
+                <com.example.administrator.mykotlin.customview.MyClearEditText
                     android:id="@+id/de_login_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -59,10 +59,10 @@
                     android:focusableInTouchMode="true"
                     android:hint="请输入手机号"
                     android:inputType="phone"
-                    android:maxLines="1"
                     android:maxLength="11"
+                    android:maxLines="1"
                     android:textColor="#FFFFFF"
-                    android:textColorHint="#FFFFFF" />
+                    android:textColorHint="#FFFFFF"/>
 
                 <FrameLayout
                     android:id="@+id/fr_username_delete"
@@ -86,7 +86,7 @@
                 android:orientation="horizontal">
 
 
-                <com.example.administrator.mykotlin.activity.widget.ClearWriteEditText
+                <com.example.administrator.mykotlin.customview.MyClearEditText
                     android:id="@+id/de_login_password"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:textColor="#FFFFFF"
-                    android:textColorHint="#FFFFFF" />
+                    android:textColorHint="#FFFFFF"/>
 
                 <FrameLayout
                     android:id="@+id/fr_pass_delete"
@@ -113,7 +113,6 @@
 
             <Button
                 android:id="@+id/de_login_sign"
-                android:textSize="18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dip"
@@ -121,8 +120,8 @@
                 android:layout_marginTop="34dip"
                 android:background="@drawable/rs_select_btn_blue"
                 android:text="登陆"
-                android:textColor="#FFFFFF" />
-
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -130,34 +129,34 @@
 
     <TextView
         android:id="@+id/de_login_forgot"
-        android:textSize="14sp"
-        android:textColor="#999999"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="15dp"
         android:layout_alignParentBottom="true"
-        android:text="忘记密码" />
+        android:padding="15dp"
+        android:text="忘记密码"
+        android:textColor="#999999"
+        android:textSize="14sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Powered by dahei"
-        android:textSize="12sp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:padding="15dp"
+        android:text="Powered by dahei"
         android:textColor="#484848"
-        />
+        android:textSize="12sp"
+    />
 
     <TextView
         android:id="@+id/de_login_register"
-        android:textSize="14sp"
-        android:textColor="#999999"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="15dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="注册" />
+        android:padding="15dp"
+        android:text="注册"
+        android:textColor="#999999"
+        android:textSize="14sp"/>
 
 </RelativeLayout>
