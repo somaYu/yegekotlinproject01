@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.example.administrator.mykotlin.persenter.BasePresenter
 
 /**
  * Created by Administrator on 2018\4\12 0012.

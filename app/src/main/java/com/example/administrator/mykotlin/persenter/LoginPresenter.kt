@@ -1,14 +1,16 @@
 package com.example.administrator.mykotlin.persenter
 
-import com.example.administrator.mykotlin.bean.BaseResponse
-import com.example.administrator.mykotlin.iview.LoginView
-import com.example.administrator.mykotlin.net.request.LoginRequest
-import top.jowanxu.wanandroidclient.bean.LoginResponse
+import com.example.administrator.mykotlin.base.BasePresenter
+import com.example.administrator.mykotlin.base.BaseResponseBean
+import com.example.administrator.mykotlin.iview.ILoginView
+import com.example.administrator.mykotlin.request.LoginRequest
+import top.jowanxu.wanandroidclient.bean.LoginResponseBean
 
 /**
  * Created by Administrator on 2018\4\11 0011.
  */
-class LoginPresenter(var iview: LoginView) : BasePresenter() {
+class LoginPresenter(var iview: ILoginView) : BasePresenter() {
+
     fun login(name: String, pass: String) {
         var request = LoginRequest()
         request.login(this, name, pass)
@@ -19,19 +21,21 @@ class LoginPresenter(var iview: LoginView) : BasePresenter() {
         request.regist(this, name, pass)
     }
 
-    override fun mySuccess(response: BaseResponse) {
-        iview.loginSuccess(response as LoginResponse)
+    fun registSuccess(result: BaseResponseBean) {
+        iview.myRegistSuccess(result as LoginResponseBean)
     }
 
-    override fun myFail(error: String?) {
-        iview.loginFaile(error)
+    fun registFail(meassage: String?) {
+        iview.myRegistFail(meassage)
     }
 
-    fun successRegist(result: BaseResponse) {
-        iview.registSuccess(result as LoginResponse)
+    override fun mySuccess(responseBean: BaseResponseBean) {
+        iview.myLoginSuccess(responseBean as LoginResponseBean)
     }
 
-    fun faileRegist(meassage: String?) {
-        iview.registFaile(meassage)
+    override fun myFail(s: String?) {
+        iview.myLoginFail(s)
     }
+
+
 }

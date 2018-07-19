@@ -4,7 +4,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.base.BaseActivity
-import com.example.administrator.mykotlin.persenter.BasePresenter
+import com.example.administrator.mykotlin.base.BasePresenter
 import com.just.agentweb.AgentWeb
 import kotlinx.android.synthetic.main.activity_web.*
 

@@ -1,25 +1,26 @@
 package com.example.administrator.mykotlin.persenter
 
-import com.example.administrator.mykotlin.bean.BaseResponse
-import com.example.administrator.mykotlin.iview.TypeView
-import com.example.administrator.mykotlin.net.request.TypeRequest
-import top.jowanxu.wanandroidclient.bean.TreeListResponse
+import com.example.administrator.mykotlin.base.BasePresenter
+import com.example.administrator.mykotlin.base.BaseResponseBean
+import com.example.administrator.mykotlin.iview.ITypeView
+import com.example.administrator.mykotlin.request.TypeRequest
+import top.jowanxu.wanandroidclient.bean.TreeListResponseBean
 
 /**
  * Created by Administrator on 2018\4\13 0013.
  */
-class TypePersenter(var view:TypeView):BasePresenter() {
+class TypePersenter(var viewI: ITypeView) : BasePresenter() {
 
     fun getType(){
         var request=TypeRequest()
         request.getType(this)
     }
 
-    override fun mySuccess(response: BaseResponse) {
-        view.typeSucces(response as TreeListResponse)
+    override fun mySuccess(responseBean: BaseResponseBean) {
+        viewI.typeSucces(responseBean as TreeListResponseBean)
     }
 
-    override fun myFail(error: String?) {
-        view.typeFaile(error)
+    override fun myFail(s: String?) {
+        viewI.typeFaile(s)
     }
 }

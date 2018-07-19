@@ -1,22 +1,22 @@
-package com.example.administrator.mykotlin.net.request
+package com.example.administrator.mykotlin.request
 
 import com.example.administrator.mykotlin.constant.Constant
-import com.example.administrator.mykotlin.net.RetrofitHelper
+import com.example.administrator.mykotlin.net.MyRetrofitHelper
 import com.example.administrator.mykotlin.persenter.HomePresenter
 import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
-import top.jowanxu.wanandroidclient.bean.HomeListResponse
+import top.jowanxu.wanandroidclient.bean.HomeListResponseBean
 
 /**
  * Created by Administrator on 2018\4\13 0013.
  */
 class HomeRequest {
 
-    var homeList:Deferred<HomeListResponse>?=null
+    var homeList: Deferred<HomeListResponseBean>? = null
     fun getHome(homePresenter:HomePresenter,page:Int){
         async(UI) {
-                homeList=RetrofitHelper.retrofitHelper.retrofitService.getHomeList(page)
+            homeList = MyRetrofitHelper.MY_RETROFIT_HELPER.retrofitService.getHomeList(page)
                 var result=homeList?.await()
                 result?:let{
                     homePresenter.myFail(Constant.RESULT_NULL)

@@ -7,16 +7,16 @@ import android.view.animation.AnimationUtils
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.base.BaseActivity
 import com.example.administrator.mykotlin.extend.myToast
-import com.example.administrator.mykotlin.iview.LoginView
+import com.example.administrator.mykotlin.iview.ILoginView
 import com.example.administrator.mykotlin.persenter.LoginPresenter
 import com.example.administrator.mykotlin.util.MySpUtil
 import kotlinx.android.synthetic.main.activity_login.*
-import top.jowanxu.wanandroidclient.bean.LoginResponse
+import top.jowanxu.wanandroidclient.bean.LoginResponseBean
 
 /**
  * Created by Administrator on 2018\4\11 0011.
  */
-class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
+class ILoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
     override fun getMyViewId(): Int = R.layout.activity_login
 
     override fun initMyPresenter() {
@@ -28,7 +28,7 @@ class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
         var handler = Handler()
         handler.postDelayed(object : Runnable {
             override fun run() {
-                var anim = AnimationUtils.loadAnimation(this@LoginActivity, R.anim.translate_anim)
+                var anim = AnimationUtils.loadAnimation(this@ILoginActivity, R.anim.translate_anim)
                 de_img_backgroud.startAnimation(anim)
             }
         }, 500)
@@ -39,15 +39,18 @@ class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
     var onClickListener = View.OnClickListener { View ->
         when (View.id) {
             R.id.de_login_sign -> {
+
                 var name = de_login_phone.text.toString()
-                var pass = de_login_password.text.toString()
+                var password = de_login_password.text.toString()
+
                 if (de_login_sign.text == "注册") {
-                    basePreasenter?.regist(name, pass)
+                    basePreasenter?.regist(name, password)
                 } else {
-                    basePreasenter?.login(name, pass)
+                    basePreasenter?.login(name, password)
                 }
 //                myToast("点击")
             }
+
             R.id.de_login_register -> {
                 de_login_sign.text = "注册"
             }
@@ -55,7 +58,7 @@ class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
     }
 
     //登陆成功后的回调
-    override fun loginSuccess(result: LoginResponse) {
+    override fun myLoginSuccess(response: LoginResponseBean) {
 //        myToast("成功")
         /*  //保存用户名和密码
           @Suppress("UNUSED_VALUE")
@@ -65,32 +68,32 @@ class LoginActivity : BaseActivity<LoginPresenter>(), LoginView {
           @Suppress("UNUSED_VALUE")
           com.example.administrator.mykotlin.base.Preference("isSign",true)*/
 //        MySpUtil.instance.edit?.putBoolean("sign",true)
-        if (result?.data != null) {
+        if (response?.dataBean != null) {
             MySpUtil.instance.getInstance(this).putBoolean("sign", true)
             MySpUtil.instance.getInstance(this).putString("name", de_login_phone.text.toString().trim())
             MySpUtil.instance.getInstance(this).putString("pass", de_login_password.text.toString().trim())
             //跳转界面
-            startActivity(Intent(this@LoginActivity, ContentActivity::class.java))
+            startActivity(Intent(this@ILoginActivity, ContentActivity::class.java))
             finish()
         } else {
-            myToast(result?.errorMsg!!)
+            myToast(response?.errorMsg!!)
         }
 
     }
 
     //登陆失败后的回调
-    override fun loginFaile(meass: String?) {
+    override fun myLoginFail(s: String?) {
         myToast("失败")
     }
 
     //注册成功的回调
-    override fun registSuccess(result: LoginResponse) {
+    override fun myRegistSuccess(response: LoginResponseBean) {
         myToast("注册成功")
         de_login_sign.text = "登录"
     }
 
     //注册失败的回调
-    override fun registFaile(meass: String?) {
+    override fun myRegistFail(meass: String?) {
         myToast("失败")
     }
 }

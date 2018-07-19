@@ -5,7 +5,7 @@ import android.os.Handler
 import android.os.Message
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.base.BaseActivity
-import com.example.administrator.mykotlin.persenter.BasePresenter
+import com.example.administrator.mykotlin.base.BasePresenter
 import com.example.administrator.mykotlin.util.MySpUtil
 
 /**
@@ -31,7 +31,7 @@ class SplashActivity : BaseActivity<BasePresenter>() {
                 startActivity(Intent(this@SplashActivity, ContentActivity::class.java))
                 finish()
             } else {
-                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+                startActivity(Intent(this@SplashActivity, ILoginActivity::class.java))
                 finish()
             }
 

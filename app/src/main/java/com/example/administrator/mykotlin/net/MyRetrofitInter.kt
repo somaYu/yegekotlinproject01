@@ -2,14 +2,14 @@ package com.example.administrator.mykotlin.net
 
 import kotlinx.coroutines.experimental.Deferred
 import retrofit2.http.*
-import top.jowanxu.wanandroidclient.bean.HomeListResponse
-import top.jowanxu.wanandroidclient.bean.LoginResponse
-import top.jowanxu.wanandroidclient.bean.TreeListResponse
+import top.jowanxu.wanandroidclient.bean.HomeListResponseBean
+import top.jowanxu.wanandroidclient.bean.LoginResponseBean
+import top.jowanxu.wanandroidclient.bean.TreeListResponseBean
 
 /**
  * Created by Administrator on 2018\4\11 0011.
  */
-interface RetrofitService {
+interface MyRetrofitInter {
     /*
     登陆
      */
@@ -18,7 +18,7 @@ interface RetrofitService {
     fun login(
             @Field("username") username: String,
             @Field("password") password: String
-    ): Deferred<LoginResponse>
+    ): Deferred<LoginResponseBean>
 
     /**
      * 首页数据
@@ -29,21 +29,21 @@ interface RetrofitService {
     @GET("/article/list/{page}/json")
     fun getHomeList(
             @Path("page") page: Int
-    ): Deferred<HomeListResponse>
+    ): Deferred<HomeListResponseBean>
 
     /**
      * 知识体系
      * http://www.wanandroid.com/tree/json
      */
     @GET("/tree/json")
-    fun getTypeTreeList(): Deferred<TreeListResponse>
+    fun getTypeTreeList(): Deferred<TreeListResponseBean>
 
     /**
      * 注册
      * @param username username
      * @param password password
      * @param repassword repassword
-     * @return Deferred<LoginResponse>
+     * @return Deferred<LoginResponseBean>
      */
     @POST("/user/register")
     @FormUrlEncoded
@@ -51,5 +51,5 @@ interface RetrofitService {
             @Field("username") username: String,
             @Field("password") password: String,
             @Field("repassword") repassowrd: String
-    ): Deferred<LoginResponse>
+    ): Deferred<LoginResponseBean>
 }

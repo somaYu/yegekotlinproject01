@@ -1,14 +1,15 @@
 package com.example.administrator.mykotlin.persenter
 
-import com.example.administrator.mykotlin.bean.BaseResponse
+import com.example.administrator.mykotlin.base.BasePresenter
+import com.example.administrator.mykotlin.base.BaseResponseBean
 
 /**
  * Created by Administrator on 2018\4\12 0012.
  */
-class ContentPresenter:BasePresenter() {
-    override fun mySuccess(response: BaseResponse) {
+class ContentPresenter : BasePresenter() {
+    override fun mySuccess(responseBean: BaseResponseBean) {
     }
 
-    override fun myFail(error: String?) {
+    override fun myFail(s: String?) {
     }
 }

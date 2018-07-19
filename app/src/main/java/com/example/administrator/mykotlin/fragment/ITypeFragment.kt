@@ -7,16 +7,16 @@ import android.view.ViewGroup
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.adapter.TypeAdapter
 import com.example.administrator.mykotlin.base.BaseFragment
-import com.example.administrator.mykotlin.iview.TypeView
+import com.example.administrator.mykotlin.iview.ITypeView
 import com.example.administrator.mykotlin.persenter.TypePersenter
 import kotlinx.android.synthetic.main.fragment_type.*
-import top.jowanxu.wanandroidclient.bean.TreeListResponse
+import top.jowanxu.wanandroidclient.bean.TreeListResponseBean
 
 /**
  * Created by Administrator on 2018\4\13 0013.
  */
-class TypeFragment : BaseFragment<TypePersenter>(), TypeView {
-    override fun typeSucces(result: TreeListResponse) {
+class ITypeFragment : BaseFragment<TypePersenter>(), ITypeView {
+    override fun typeSucces(result: TreeListResponseBean) {
         ty_recycler.run {
             layoutManager = LinearLayoutManager(activity)
             adapter = TypeAdapter(activity, R.layout.item_home, result?.data)

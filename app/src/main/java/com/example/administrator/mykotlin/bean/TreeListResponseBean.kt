@@ -1,13 +1,13 @@
 package top.jowanxu.wanandroidclient.bean
 
-import com.example.administrator.mykotlin.bean.BaseResponse
+import com.example.administrator.mykotlin.base.BaseResponseBean
 import java.io.Serializable
 
-data class TreeListResponse(
+data class TreeListResponseBean(
     var errorCode: Int,
     var errorMsg: String?,
     var data: ArrayList<Data>
-):BaseResponse(){
+) : BaseResponseBean() {
     data class Data(
         var id: Int,
         var name: String,
