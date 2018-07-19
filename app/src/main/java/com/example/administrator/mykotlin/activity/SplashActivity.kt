@@ -19,7 +19,7 @@ class SplashActivity : BaseActivity<BasePresenter>() {
         override fun handleMessage(msg: Message?) {
             super.handleMessage(msg)
             /*  @Suppress("UNUSED_VALUE")
-              var isSign:Boolean by Preference("isSign",false)*/
+              var isSign:Boolean by MyPreference("isSign",false)*/
 //            var isSign=MySpUtil.instance.sharedPreferences?.getBoolean("sign",false)
 
 //            var isSign = MySpUtil.instance.getInstance(this@SplashActivity).getBoolean("sign", false)

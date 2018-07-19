@@ -16,9 +16,10 @@ interface MyRetrofitInter {
     @POST("/user/login")
     @FormUrlEncoded
     fun login(
-            @Field("username") username: String,
-            @Field("password") password: String
-    ): Deferred<LoginResponseBean>
+            @Field("username") username: String
+            , @Field("password") password: String
+    )
+            : Deferred<LoginResponseBean>
 
     /**
      * 首页数据

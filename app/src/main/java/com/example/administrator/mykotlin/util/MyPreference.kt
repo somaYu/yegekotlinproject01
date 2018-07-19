@@ -1,41 +1,39 @@
-package com.example.administrator.mykotlin.base
+package com.example.administrator.mykotlin.util
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.administrator.mykotlin.constant.Constant
+import com.example.administrator.mykotlin.constant.MyConstant
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 /**
  * Created by Administrator on 2018\4\11 0011.
  */
-class Preference<T>(private val name: String, private val default: T) : ReadWriteProperty<Any?, T> {
+class MyPreference<T>(private val name: String, private val default: T) : ReadWriteProperty<Any?, T> {
 
     companion object {
+        // lateinit修饰符只能修饰不可空类型
         lateinit var preferences: SharedPreferences
-        /**
-         * init Context
-         * @param context Context
-         */
-        fun setContext(context: Context) {
+
+        fun setMyContext(context: Context) {
             preferences = context.getSharedPreferences(
-                    context.packageName + Constant.SHARED_NAME,
-                    Context.MODE_PRIVATE
+                    context.packageName + MyConstant.SHARED_NAME
+                    , Context.MODE_PRIVATE
             )
         }
 
-        fun clear() {
+        fun myClear() {
             preferences.edit().clear().apply()
         }
     }
 
-    override fun getValue(thisRef: Any?, property: KProperty<*>): T = findPreference(name, default)
+    override fun getValue(thisRef: Any?, property: KProperty<*>): T = setMyPreference(name, default)
 
-    override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) = putPreference(name, value)
+    override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) = putMyPreference(name, value)
 
     @Suppress("UNCHECKED_CAST")
-    private fun <U> findPreference(name: String, default: U): U = with(preferences) {
+    private fun <U> setMyPreference(name: String, default: U): U = with(preferences) {
         val res: Any = when (default) {
             is Long -> getLong(name, default)
             is String -> getString(name, default)
@@ -48,7 +46,7 @@ class Preference<T>(private val name: String, private val default: T) : ReadWrit
     }
 
     @SuppressLint("CommitPrefEdits")
-    private fun <U> putPreference(name: String, value: U) = with(preferences.edit()) {
+    private fun <U> putMyPreference(name: String, value: U) = with(preferences.edit()) {
         when (value) {
             is Long -> putLong(name, value)
             is String -> putString(name, value)

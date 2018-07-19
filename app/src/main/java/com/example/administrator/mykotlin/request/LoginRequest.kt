@@ -1,6 +1,6 @@
 package com.example.administrator.mykotlin.request
 
-import com.example.administrator.mykotlin.constant.Constant
+import com.example.administrator.mykotlin.constant.MyConstant
 import com.example.administrator.mykotlin.net.MyRetrofitHelper
 import com.example.administrator.mykotlin.persenter.LoginPresenter
 import kotlinx.coroutines.experimental.Deferred
@@ -18,10 +18,10 @@ class LoginRequest() {
     fun regist(p: LoginPresenter, name: String, password: String) {
 
         async(UI) {
-            loginAsync = MyRetrofitHelper.MY_RETROFIT_HELPER.retrofitService.register(name, password, password)
+            loginAsync = MyRetrofitHelper.instance.retrofitService.register(name, password, password)
             var result = loginAsync?.await()
             result ?: let {
-                p.registFail(Constant.RESULT_NULL)
+                p.registFail(MyConstant.RESULT_NULL)
                 return@async
             }
             p.registSuccess(result)
@@ -34,10 +34,10 @@ class LoginRequest() {
             username: String, password: String
     ) {
         async(UI) {
-            loginAsync = MyRetrofitHelper.MY_RETROFIT_HELPER.retrofitService.login(username, password)
+            loginAsync = MyRetrofitHelper.instance.retrofitService.login(username, password)
             val result = loginAsync?.await()
             result ?: let {
-                onLoginListener.myFail(Constant.RESULT_NULL)
+                onLoginListener.myFail(MyConstant.RESULT_NULL)
                 return@async
             }
             onLoginListener.mySuccess(result)

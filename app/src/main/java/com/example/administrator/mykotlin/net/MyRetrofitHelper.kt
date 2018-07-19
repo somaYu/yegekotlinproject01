@@ -1,8 +1,8 @@
 package com.example.administrator.mykotlin.net
 
-import com.example.administrator.mykotlin.base.Preference
-import com.example.administrator.mykotlin.constant.Constant
+import com.example.administrator.mykotlin.constant.MyConstant
 import com.example.administrator.mykotlin.extend.encodeMyCookie
+import com.example.administrator.mykotlin.util.MyPreference
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -27,61 +27,59 @@ class MyRetrofitHelper private constructor() {
 
     // kotlin的单例实现
     companion object {
-        val MY_RETROFIT_HELPER: MyRetrofitHelper by lazy { MyRetrofitHelper() }
+        // 此处单例必须是val
+        val instance: MyRetrofitHelper by lazy { MyRetrofitHelper() }
     }
 
-    // 呵呵
-    fun getRetrofit(
-            url: String
-            , client: OkHttpClient
-            , gsonConver: GsonConverterFactory
-            , coroutine: CoroutineCallAdapterFactory
-
-    ): Retrofit {
-        var retrofit = Retrofit.Builder()
-                .apply {
-                    baseUrl(url)
-                    client(client)
-                    addConverterFactory(gsonConver)
-                    addCallAdapterFactory(coroutine)
-                }
-                .build()
-
-        return retrofit
-    }
-
-
-    var retrofitService = getServer(Constant.REQUEST_BASE_URL, MyRetrofitInter::class.java)
+    var retrofitService = getServer(
+            MyConstant.REQUEST_BASE_URL
+            , MyRetrofitInter::class.java)
 
     //创建我们的retroiftservice
-    private fun <T> getServer(url: String, service: Class<T>): T = create(url).create(service)
+    private fun <T> getServer(
+            url: String
+            , service: Class<T>
+    ): T = myUrl(url)
+            .create(service)
 
-    private fun create(url: String): Retrofit {
+    private fun myUrl(url: String): Retrofit {
         // 创建 okHttpClientBuilder
-        val okHttpClientBuilder = OkHttpClient()
-                .newBuilder()
+        val builder = OkHttpClient().newBuilder()
                 .apply {
                     connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                     readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
-                    // 获取response cookie
                     addInterceptor {
                         val request = it.request()
                         val response = it.proceed(request)
                         val requestUrl = request.url().toString()
                         val host = request.url().host()
+
                         // set-cookie maybe has multi, login to save cookie
+
+                        val a = requestUrl.contains(SAVE_USER_LOGIN_KEY)
+                        val b = requestUrl.contains(SAVE_USER_REGISTER_KEY)
+                        val c = !response.headers(SET_COOKIE_KEY).isEmpty()
+
                         if (
-                                (requestUrl.contains(SAVE_USER_LOGIN_KEY)
-                                        || requestUrl.contains(
-                                        SAVE_USER_REGISTER_KEY
-                                ))
-                                && !response.headers(SET_COOKIE_KEY).isEmpty()) {
-                            val cookies = response.headers(SET_COOKIE_KEY)
-                            val cookie = encodeMyCookie(cookies)
+                                (
+//                                        requestUrl.contains(SAVE_USER_LOGIN_KEY)
+                                        a
+                                                ||
+//                                                requestUrl.contains(SAVE_USER_REGISTER_KEY)
+                                                b
+                                        )
+                                &&
+//                                !response.headers(SET_COOKIE_KEY).isEmpty()
+                                c
+                        ) {
+                            val header = response.headers(SET_COOKIE_KEY)
+                            val cookie = encodeMyCookie(header)
                             saveMyCookie(requestUrl, host, cookie)
                         }
+
                         response
                     }
+
                     // set request cookie
                     addInterceptor {
                         val request = it.request()
@@ -89,7 +87,7 @@ class MyRetrofitHelper private constructor() {
                         val domain = request.url().host()
                         // getInstance domain cookie
                         if (domain.isNotEmpty()) {
-                            val spDomain: String by Preference(domain, "")
+                            val spDomain: String by MyPreference(domain, "")
                             val cookie: String = if (spDomain.isNotEmpty()) spDomain else ""
                             if (cookie.isNotEmpty()) {
                                 builder.addHeader(COOKIE_NAME, cookie)
@@ -98,7 +96,7 @@ class MyRetrofitHelper private constructor() {
                         it.proceed(builder.build())
                     }
                     // add log print
-                    if (Constant.INTERCEPTOR_ENABLE) {
+                    if (MyConstant.INTERCEPTOR_ENABLE) {
                         // loggingInterceptor
                         addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
                             //                    loge(TAG, CONTENT_PRE + it)
@@ -109,30 +107,40 @@ class MyRetrofitHelper private constructor() {
                     }
                 }
 
-        return getRetrofit(
-                url
-                , okHttpClientBuilder.build()
-                , GsonConverterFactory.create()
-                , CoroutineCallAdapterFactory()
-        )
+        var retrofit = Retrofit.Builder()
+                .apply {
+                    baseUrl(url)
+                    client(builder.build())
+                    addConverterFactory(GsonConverterFactory.create())
+                    addCallAdapterFactory(CoroutineCallAdapterFactory())
+                }
+                .build()
+
+        return retrofit
+
 //        MyRetrofitCreater(
 //                url = url,
-//                client = okHttpClientBuilder.build(),
-//                gsonConver = GsonConverterFactory.create(),
+//                client = builder.build(),
+//                gsonConver = GsonConverterFactory.myUrl(),
 //                coroutine = CoroutineCallAdapterFactory()
 //        ).retrofit
     }
 
+
     @Suppress("ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE")
     private fun saveMyCookie(url: String?, domain: String?, cookies: String) {
+
+        // 这非空判断把人都看醉了
         url ?: return
-        var spUrl: String by Preference(url, cookies)
-        @Suppress("UNUSED_VALUE")
+        var spUrl: String by MyPreference(url, cookies)
+        //        @Suppress("UNUSED_VALUE")
         spUrl = cookies
+
         domain ?: return
-        var spDomain: String by Preference(domain, cookies)
-        @Suppress("UNUSED_VALUE")
+        var spDomain: String by MyPreference(domain, cookies)
+        //        @Suppress("UNUSED_VALUE")
         spDomain = cookies
+
     }
 
 }

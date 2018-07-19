@@ -62,11 +62,11 @@ class ILoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
 //        myToast("成功")
         /*  //保存用户名和密码
           @Suppress("UNUSED_VALUE")
-          var username:String by com.example.administrator.mykotlin.base.Preference("username", de_login_phone.text.toString())
+          var username:String by com.example.administrator.mykotlin.util.MyPreference("username", de_login_phone.text.toString())
           @Suppress("UNUSED_VALUE")
-          var pass:String by com.example.administrator.mykotlin.base.Preference("pass",de_login_password.text.toString())
+          var pass:String by com.example.administrator.mykotlin.util.MyPreference("pass",de_login_password.text.toString())
           @Suppress("UNUSED_VALUE")
-          com.example.administrator.mykotlin.base.Preference("isSign",true)*/
+          com.example.administrator.mykotlin.util.MyPreference("isSign",true)*/
 //        MySpUtil.instance.edit?.putBoolean("sign",true)
         if (response?.dataBean != null) {
             MySpUtil.instance.getInstance(this).putBoolean("sign", true)

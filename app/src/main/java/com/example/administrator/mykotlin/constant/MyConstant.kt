@@ -7,7 +7,7 @@ import android.widget.Toast
  */
 
 // 使用object关键字替代class关键字就可以声明一个单例对象
-object Constant {
+object MyConstant {
     // 好像const并没有啥实际用处
     const val REQUEST_BASE_URL="http://wanandroid.com/"
     const val SHARED_NAME = "_preferences"

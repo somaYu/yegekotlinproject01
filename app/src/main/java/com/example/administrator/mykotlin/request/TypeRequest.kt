@@ -1,6 +1,6 @@
 package com.example.administrator.mykotlin.request
 
-import com.example.administrator.mykotlin.constant.Constant
+import com.example.administrator.mykotlin.constant.MyConstant
 import com.example.administrator.mykotlin.net.MyRetrofitHelper
 import com.example.administrator.mykotlin.persenter.TypePersenter
 import kotlinx.coroutines.experimental.Deferred
@@ -15,10 +15,10 @@ class TypeRequest {
     var typeTree: Deferred<TreeListResponseBean>? = null
     fun getType(listen:TypePersenter){
         async(UI) {
-            typeTree = MyRetrofitHelper.MY_RETROFIT_HELPER.retrofitService.getTypeTreeList()
+            typeTree = MyRetrofitHelper.instance.retrofitService.getTypeTreeList()
             var result=typeTree?.await()
             result?:let {
-                listen.myFail(Constant.RESULT_NULL)
+                listen.myFail(MyConstant.RESULT_NULL)
                 return@async
             }
             listen.mySuccess(result)
