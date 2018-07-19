@@ -10,6 +10,7 @@ import kotlin.reflect.KProperty
 /**
  * Created by Administrator on 2018\4\11 0011.
  */
+
 class MyPreference<T>(private val name: String, private val default: T) : ReadWriteProperty<Any?, T> {
 
     companion object {
