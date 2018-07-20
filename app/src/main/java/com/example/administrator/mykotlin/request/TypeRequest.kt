@@ -15,13 +15,13 @@ class TypeRequest {
     var typeTree: Deferred<TreeListResponseBean>? = null
     fun getType(listen:TypePersenter){
         async(UI) {
-            typeTree = MyRetrofitHelper.instance.retrofitService.getTypeTreeList()
+            typeTree = MyRetrofitHelper.instance.interR.getTypeTreeList()
             var result=typeTree?.await()
             result?:let {
-                listen.myFail(MyConstant.RESULT_NULL)
+                listen.loginFail(MyConstant.RESULT_NULL)
                 return@async
             }
-            listen.mySuccess(result)
+            listen.loginSuccess(result)
         }
     }
 }

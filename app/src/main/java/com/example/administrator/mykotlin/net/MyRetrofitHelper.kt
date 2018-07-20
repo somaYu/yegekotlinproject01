@@ -19,7 +19,7 @@ class MyRetrofitHelper private constructor() {
     private val TAG = "MyRetrofitHelper"
     private val CONTENT_PRE = "OkHttp: "
     private val SAVE_USER_LOGIN_KEY = "user/login"
-    private val SAVE_USER_REGISTER_KEY = "user/register"
+    private val SAVE_USER_REGISTER_KEY = "user/regist"
     private val SET_COOKIE_KEY = "set-cookie"
     private val COOKIE_NAME = "Cookie"
     private val CONNECT_TIMEOUT = 30L
@@ -33,7 +33,7 @@ class MyRetrofitHelper private constructor() {
 
     }
 
-    var retrofitService = getServer(
+    var interR = getServer(
             MyConstant.REQUEST_BASE_URL
             , MyRetrofitInter::class.java)
 

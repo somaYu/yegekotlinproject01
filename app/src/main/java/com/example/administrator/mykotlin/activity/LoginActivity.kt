@@ -16,7 +16,7 @@ import top.jowanxu.wanandroidclient.bean.LoginResponseBean
 /**
  * Created by Administrator on 2018\4\11 0011.
  */
-class ILoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
+class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
     override fun getMyViewId(): Int = R.layout.activity_login
 
     override fun initMyPresenter() {
@@ -28,22 +28,22 @@ class ILoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
         var handler = Handler()
         handler.postDelayed(object : Runnable {
             override fun run() {
-                var anim = AnimationUtils.loadAnimation(this@ILoginActivity, R.anim.translate_anim)
+                var anim = AnimationUtils.loadAnimation(this@LoginActivity, R.anim.translate_anim)
                 de_img_backgroud.startAnimation(anim)
             }
         }, 500)
-        de_login_sign.setOnClickListener(onClickListener)
+        de_login_login.setOnClickListener(onClickListener)
         de_login_register.setOnClickListener(onClickListener)
     }
 
     var onClickListener = View.OnClickListener { View ->
         when (View.id) {
-            R.id.de_login_sign -> {
+            R.id.de_login_login -> {
 
                 var name = de_login_phone.text.toString()
                 var password = de_login_password.text.toString()
 
-                if (de_login_sign.text == "注册") {
+                if (de_login_login.text == "注册") {
                     basePreasenter?.regist(name, password)
                 } else {
                     basePreasenter?.login(name, password)
@@ -52,9 +52,20 @@ class ILoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
             }
 
             R.id.de_login_register -> {
-                de_login_sign.text = "注册"
+                de_login_login.text = "注册"
             }
         }
+    }
+
+    //注册成功的回调
+    override fun myRegistSuccess(response: LoginResponseBean) {
+        myToast("注册成功")
+        de_login_login.text = "登录"
+    }
+
+    //注册失败的回调
+    override fun myRegistFail(meass: String?) {
+        myToast("失败")
     }
 
     //登陆成功后的回调
@@ -73,7 +84,7 @@ class ILoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
             MySpUtil.instance.getInstance(this).putString("name", de_login_phone.text.toString().trim())
             MySpUtil.instance.getInstance(this).putString("pass", de_login_password.text.toString().trim())
             //跳转界面
-            startActivity(Intent(this@ILoginActivity, ContentActivity::class.java))
+            startActivity(Intent(this@LoginActivity, ContentActivity::class.java))
             finish()
         } else {
             myToast(response?.errorMsg!!)
@@ -86,14 +97,4 @@ class ILoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
         myToast("失败")
     }
 
-    //注册成功的回调
-    override fun myRegistSuccess(response: LoginResponseBean) {
-        myToast("注册成功")
-        de_login_sign.text = "登录"
-    }
-
-    //注册失败的回调
-    override fun myRegistFail(meass: String?) {
-        myToast("失败")
-    }
 }

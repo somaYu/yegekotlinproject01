@@ -16,13 +16,13 @@ class HomeRequest {
     var homeList: Deferred<HomeListResponseBean>? = null
     fun getHome(homePresenter:HomePresenter,page:Int){
         async(UI) {
-            homeList = MyRetrofitHelper.instance.retrofitService.getHomeList(page)
+            homeList = MyRetrofitHelper.instance.interR.getHomeList(page)
                 var result=homeList?.await()
                 result?:let{
-                    homePresenter.myFail(MyConstant.RESULT_NULL)
+                    homePresenter.loginFail(MyConstant.RESULT_NULL)
                 return@async
             }
-            homePresenter.mySuccess(result)
+            homePresenter.loginSuccess(result)
         }
     }
 }

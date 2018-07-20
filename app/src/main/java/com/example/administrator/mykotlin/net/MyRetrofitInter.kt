@@ -10,6 +10,19 @@ import top.jowanxu.wanandroidclient.bean.TreeListResponseBean
  * Created by Administrator on 2018\4\11 0011.
  */
 interface MyRetrofitInter {
+
+    /**
+     * 注册
+     * @return Deferred<LoginResponseBean>
+     */
+    @POST("/user/regist")
+    @FormUrlEncoded
+    fun regist(
+            @Field("username") username: String,
+            @Field("password") password: String,
+            @Field("repassword") repassowrd: String
+    ): Deferred<LoginResponseBean>
+
     /*
     登陆
      */
@@ -39,18 +52,4 @@ interface MyRetrofitInter {
     @GET("/tree/json")
     fun getTypeTreeList(): Deferred<TreeListResponseBean>
 
-    /**
-     * 注册
-     * @param username username
-     * @param password password
-     * @param repassword repassword
-     * @return Deferred<LoginResponseBean>
-     */
-    @POST("/user/register")
-    @FormUrlEncoded
-    fun register(
-            @Field("username") username: String,
-            @Field("password") password: String,
-            @Field("repassword") repassowrd: String
-    ): Deferred<LoginResponseBean>
 }

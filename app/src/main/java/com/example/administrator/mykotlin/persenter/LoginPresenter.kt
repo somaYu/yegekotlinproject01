@@ -11,14 +11,9 @@ import top.jowanxu.wanandroidclient.bean.LoginResponseBean
  */
 class LoginPresenter(var iview: ILoginView) : BasePresenter() {
 
-    fun login(name: String, pass: String) {
+    fun regist(name: String, password: String) {
         var request = LoginRequest()
-        request.login(this, name, pass)
-    }
-
-    fun regist(name: String, pass: String) {
-        var request = LoginRequest()
-        request.regist(this, name, pass)
+        request.regist(this, name, password)
     }
 
     fun registSuccess(result: BaseResponseBean) {
@@ -29,11 +24,17 @@ class LoginPresenter(var iview: ILoginView) : BasePresenter() {
         iview.myRegistFail(meassage)
     }
 
-    override fun mySuccess(responseBean: BaseResponseBean) {
+    fun login(name: String, password: String) {
+        var request = LoginRequest()
+        request.login(this, name, password)
+    }
+
+
+    override fun loginSuccess(responseBean: BaseResponseBean) {
         iview.myLoginSuccess(responseBean as LoginResponseBean)
     }
 
-    override fun myFail(s: String?) {
+    override fun loginFail(s: String?) {
         iview.myLoginFail(s)
     }
 

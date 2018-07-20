@@ -16,11 +16,11 @@ class TypePersenter(var viewI: ITypeView) : BasePresenter() {
         request.getType(this)
     }
 
-    override fun mySuccess(responseBean: BaseResponseBean) {
+    override fun loginSuccess(responseBean: BaseResponseBean) {
         viewI.typeSucces(responseBean as TreeListResponseBean)
     }
 
-    override fun myFail(s: String?) {
+    override fun loginFail(s: String?) {
         viewI.typeFaile(s)
     }
 }

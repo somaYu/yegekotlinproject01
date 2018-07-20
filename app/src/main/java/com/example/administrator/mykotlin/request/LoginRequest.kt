@@ -13,34 +13,49 @@ import top.jowanxu.wanandroidclient.bean.LoginResponseBean
  */
 class LoginRequest() {
 
+    var registAsync: Deferred<LoginResponseBean>? = null
+
     var loginAsync: Deferred<LoginResponseBean>? = null
 
-    fun regist(p: LoginPresenter, name: String, password: String) {
+    fun regist(
+            p: LoginPresenter
+            , name: String
+            , password: String) {
 
         async(UI) {
-            loginAsync = MyRetrofitHelper.instance.retrofitService.register(name, password, password)
-            var result = loginAsync?.await()
+
+            registAsync = MyRetrofitHelper.instance.interR.regist(name, password, password)
+
+            var result = registAsync?.await()
+
             result ?: let {
                 p.registFail(MyConstant.RESULT_NULL)
                 return@async
             }
+
             p.registSuccess(result)
         }
 
     }
 
     fun login(
-            onLoginListener: LoginPresenter,
-            username: String, password: String
+            p: LoginPresenter
+            , username: String
+            , password: String
     ) {
         async(UI) {
-            loginAsync = MyRetrofitHelper.instance.retrofitService.login(username, password)
+
+            loginAsync = MyRetrofitHelper.instance.interR.login(username, password)
+
             val result = loginAsync?.await()
+
             result ?: let {
-                onLoginListener.myFail(MyConstant.RESULT_NULL)
+                p.loginFail(MyConstant.RESULT_NULL)
                 return@async
             }
-            onLoginListener.mySuccess(result)
+
+            p.loginSuccess(result)
+
         }
     }
 

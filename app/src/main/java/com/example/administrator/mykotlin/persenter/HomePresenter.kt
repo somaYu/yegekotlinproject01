@@ -16,11 +16,11 @@ class HomePresenter(var viewI: IHomeView) : BasePresenter() {
         request.getHome(this,page)
     }
 
-    override fun mySuccess(responseBean: BaseResponseBean) {
+    override fun loginSuccess(responseBean: BaseResponseBean) {
         viewI.homeSuccess(responseBean as HomeListResponseBean)
     }
 
-    override fun myFail(s: String?) {
+    override fun loginFail(s: String?) {
         viewI.homeFaile(s)
     }
 }

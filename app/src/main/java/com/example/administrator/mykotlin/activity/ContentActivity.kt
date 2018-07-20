@@ -46,7 +46,7 @@ class ContentActivity : BaseActivity<ContentPresenter>() {
     private var onClickListener= View.OnClickListener {
         View->when(View.id){
         R.id.exit->{
-            startActivity(Intent(this@ContentActivity, ILoginActivity::class.java))
+            startActivity(Intent(this@ContentActivity, LoginActivity::class.java))
             MySpUtil.instance.getInstance(this@ContentActivity).putBoolean("sign", false)
             finish()
         }

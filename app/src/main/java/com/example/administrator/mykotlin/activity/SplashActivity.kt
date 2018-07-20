@@ -31,7 +31,7 @@ class SplashActivity : BaseActivity<BasePresenter>() {
                 startActivity(Intent(this@SplashActivity, ContentActivity::class.java))
                 finish()
             } else {
-                startActivity(Intent(this@SplashActivity, ILoginActivity::class.java))
+                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
                 finish()
             }
 
