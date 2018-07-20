@@ -34,7 +34,7 @@ class MyRetrofitHelper private constructor() {
         val instance: MyRetrofitHelper by lazy { MyRetrofitHelper() }
     }
 
-    var retrofitService = getServer(
+    var interR = getServer(
             MyConstant.REQUEST_BASE_URL
             , MyRetrofitInter::class.java
     )

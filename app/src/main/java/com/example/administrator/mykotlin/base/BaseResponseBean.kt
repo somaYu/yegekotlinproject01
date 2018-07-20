@@ -3,8 +3,8 @@ package com.example.administrator.mykotlin.base
 /**
  * @author wodemingziyouyidianchang
  * @version 1.0.0
- * @since 2018/7/18 15:54
+ * @since 2018/7/19 14:30
  */
-abstract class BaseResponse {
 
+abstract class BaseResponseBean {
 }

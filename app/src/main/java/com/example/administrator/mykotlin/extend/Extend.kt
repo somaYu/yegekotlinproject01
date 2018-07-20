@@ -1,6 +1,7 @@
 package com.example.administrator.mykotlin.extend
 
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 
@@ -29,6 +30,23 @@ fun View.myInVisible() {
     visibility = View.INVISIBLE
 }
 
+fun hehe(list: List<String>) {
+
+    val sb = StringBuilder()
+    val set = HashSet<String>()
+
+    list.map { s ->
+
+        s.split(",")
+
+        Log.e("yy", "s=" + s)
+
+    }
+
+
+}
+
+// 呵呵呵
 fun encodeMyCookie(list: List<String>): String {
 
     var sb = StringBuilder()
@@ -37,7 +55,17 @@ fun encodeMyCookie(list: List<String>): String {
     // kotlin里的方法
     list.map {
 
+        it.split(";".toRegex())
+
     }
+            .forEach {
+
+                // 这特么什么写法
+                it.forEach {
+                    set.add(it)
+                }
+
+            }
 
     val it = set.iterator()
 

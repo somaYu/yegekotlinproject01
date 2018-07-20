@@ -9,9 +9,9 @@ package com.example.administrator.mykotlin.base
 // 根据业务想出来的基类
 abstract class BasePresenter {
 
-    abstract fun mySuccesss(response: BaseResponse)
+    abstract fun loginSuccess(responseBean: BaseResponseBean)
 
-    abstract fun myFail(error: String)
+    abstract fun loginFail(s: String)
 
 }
 
