@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 
 /**
  * Created by Administrator on 2018\4\10 0010.
- * 构建为单列模式
+ * 构建为单例模式
  */
 class MyRetrofitHelper private constructor() {
 
@@ -27,8 +27,10 @@ class MyRetrofitHelper private constructor() {
 
     // kotlin的单例实现
     companion object {
+
         // 此处单例必须是val
         val instance: MyRetrofitHelper by lazy { MyRetrofitHelper() }
+
     }
 
     var retrofitService = getServer(
@@ -39,8 +41,8 @@ class MyRetrofitHelper private constructor() {
     private fun <T> getServer(
             url: String
             , service: Class<T>
-    ): T = myUrl(url)
-            .create(service)
+    )
+            : T = myUrl(url).create(service)
 
     private fun myUrl(url: String): Retrofit {
         // 创建 okHttpClientBuilder
@@ -55,7 +57,6 @@ class MyRetrofitHelper private constructor() {
                         val host = request.url().host()
 
                         // set-cookie maybe has multi, login to save cookie
-
                         val a = requestUrl.contains(SAVE_USER_LOGIN_KEY)
                         val b = requestUrl.contains(SAVE_USER_REGISTER_KEY)
                         val c = !response.headers(SET_COOKIE_KEY).isEmpty()
@@ -84,10 +85,10 @@ class MyRetrofitHelper private constructor() {
                     addInterceptor {
                         val request = it.request()
                         val builder = request.newBuilder()
-                        val domain = request.url().host()
+                        val host = request.url().host()
                         // getInstance domain cookie
-                        if (domain.isNotEmpty()) {
-                            val spDomain: String by MyPreference(domain, "")
+                        if (host.isNotEmpty()) {
+                            val spDomain: String by MyPreference(host, "")
                             val cookie: String = if (spDomain.isNotEmpty()) spDomain else ""
                             if (cookie.isNotEmpty()) {
                                 builder.addHeader(COOKIE_NAME, cookie)
@@ -95,15 +96,18 @@ class MyRetrofitHelper private constructor() {
                         }
                         it.proceed(builder.build())
                     }
+
                     // add log print
                     if (MyConstant.INTERCEPTOR_ENABLE) {
                         // loggingInterceptor
-                        addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
-                            //                    loge(TAG, CONTENT_PRE + it)
-                        }).apply {
-                            // log level
-                            level = HttpLoggingInterceptor.Level.BODY
-                        })
+                        addInterceptor(
+                                HttpLoggingInterceptor(
+                                        HttpLoggingInterceptor.Logger {
+                                            //                    loge(TAG, CONTENT_PRE + it)
+                                        }).apply {
+                                    // log level
+                                    level = HttpLoggingInterceptor.Level.BODY
+                                })
                     }
                 }
 
@@ -128,18 +132,18 @@ class MyRetrofitHelper private constructor() {
 
 
     @Suppress("ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE")
-    private fun saveMyCookie(url: String?, domain: String?, cookies: String) {
+    private fun saveMyCookie(s1: String?, s2: String?, cookies: String) {
 
         // 这非空判断把人都看醉了
-        url ?: return
-        var spUrl: String by MyPreference(url, cookies)
+        s1 ?: return
+        var spS1: String by MyPreference(s1, cookies)
         //        @Suppress("UNUSED_VALUE")
-        spUrl = cookies
+        spS1 = cookies
 
-        domain ?: return
-        var spDomain: String by MyPreference(domain, cookies)
+        s2 ?: return
+        var spS2: String by MyPreference(s2, cookies)
         //        @Suppress("UNUSED_VALUE")
-        spDomain = cookies
+        spS2 = cookies
 
     }
 

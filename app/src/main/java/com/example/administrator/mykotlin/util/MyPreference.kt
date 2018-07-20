@@ -34,27 +34,33 @@ class MyPreference<T>(private val name: String, private val default: T) : ReadWr
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) = putMyPreference(name, value)
 
     @Suppress("UNCHECKED_CAST")
-    private fun <U> setMyPreference(name: String, default: U): U = with(preferences) {
-        val res: Any = when (default) {
-            is Long -> getLong(name, default)
-            is String -> getString(name, default)
-            is Int -> getInt(name, default)
-            is Boolean -> getBoolean(name, default)
-            is Float -> getFloat(name, default)
+    private fun <U> setMyPreference(k: String, v: U): U = with(preferences) {
+
+        val res: Any = when (v) {
+            is Long -> getLong(k, v)
+            is String -> getString(k, v)
+            is Int -> getInt(k, v)
+            is Boolean -> getBoolean(k, v)
+            is Float -> getFloat(k, v)
             else -> throw IllegalArgumentException("This type can be saved into Preferences")
         }
+
         res as U
+
     }
 
     @SuppressLint("CommitPrefEdits")
-    private fun <U> putMyPreference(name: String, value: U) = with(preferences.edit()) {
-        when (value) {
-            is Long -> putLong(name, value)
-            is String -> putString(name, value)
-            is Int -> putInt(name, value)
-            is Boolean -> putBoolean(name, value)
-            is Float -> putFloat(name, value)
+    private fun <U> putMyPreference(k: String, v: U) = with(preferences.edit()) {
+
+        when (v) {
+            is Long -> putLong(k, v)
+            is String -> putString(k, v)
+            is Int -> putInt(k, v)
+            is Boolean -> putBoolean(k, v)
+            is Float -> putFloat(k, v)
             else -> throw IllegalArgumentException("This type can be saved into Preferences")
         }.apply()
+
     }
+
 }
