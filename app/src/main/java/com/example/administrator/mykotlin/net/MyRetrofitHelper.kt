@@ -34,25 +34,16 @@ class MyRetrofitHelper private constructor() {
         val instance: MyRetrofitHelper by lazy { MyRetrofitHelper() }
     }
 
-    // 获取retrofit
-    fun getRetrofit(
+    var retrofitService = getServer(
+            MyConstant.REQUEST_BASE_URL
+            , MyRetrofitInter::class.java
+    )
+
+    private fun <T> getServer(
             url: String
-            , client: OkHttpClient
-            , gsonConver: GsonConverterFactory
-            , coroutine: CoroutineCallAdapterFactory
-    ): Retrofit {
-
-        var retrofit = Retrofit.Builder()
-                .apply {
-                    baseUrl(url)
-                    client(client)
-                    addConverterFactory(gsonConver)
-                    addCallAdapterFactory(coroutine)
-                }
-                .build()
-
-        return retrofit
-    }
+            , service: Class<T>
+    )
+            : T = myUrl(url).create(service)
 
     fun myUrl(url: String): Retrofit {
 
