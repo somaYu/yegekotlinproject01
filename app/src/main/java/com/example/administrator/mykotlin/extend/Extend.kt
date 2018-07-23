@@ -34,8 +34,8 @@ fun encodeMyCookie(list: List<String>): String {
     val sb = StringBuilder()
     val set = HashSet<String>()
 
-    list.map { s ->
-        s.split(";".toRegex())
+    list.map { it ->
+        it.split(";".toRegex())
                 .dropLastWhile {
                     it.isEmpty()
                 }
@@ -52,8 +52,8 @@ fun encodeMyCookie(list: List<String>): String {
 
     val it = set.iterator()
     while (it.hasNext()) {
-        val cookie = it.next()
-        sb.append(cookie).append(";")
+        val next = it.next()
+        sb.append(next).append(";")
     }
 
     val last = sb.lastIndexOf(";")

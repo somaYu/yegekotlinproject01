@@ -63,7 +63,7 @@ class IHomeFragment : BaseFragment<HomePresenter>(), IHomeView {
             mPresenter?.getHome(homeList?.data?.curPage!!)
             refresh.finishLoadMore()
         }
-        /* var datas=homeList?.dataBean?.datas
+        /* var datas=homeList?.data?.datas
  //        var recycler01=views?.findViewById<RecyclerView>(R.id.recycler)
          recycler.layoutManager=LinearLayoutManager(activity)
          recycler.adapter= MyHomeAdapter(context,R.layout.item_home,datas)*/

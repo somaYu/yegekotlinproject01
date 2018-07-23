@@ -6,7 +6,8 @@ import com.example.administrator.mykotlin.base.BaseResponseBean
 data class LoginResponseBean(
         var errorCode: Int
         , var errorMsg: String?
-        , var dataBean: DataBean
+        // 这个地方如果改字段名，则会出错
+        , var data: DataBean
 ) : BaseResponseBean() {
     data class DataBean(
             var id: Int

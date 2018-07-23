@@ -12,6 +12,7 @@ import com.example.administrator.mykotlin.util.MySpUtil
  * Created by Administrator on 2018\4\13 0013.
  */
 
+// 呵呵呵呵呵
 class SplashActivity : BaseActivity<BasePresenter>() {
 
     private var handler = object : Handler() {
