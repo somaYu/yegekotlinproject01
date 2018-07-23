@@ -92,7 +92,7 @@ class LoginActivity
 
     override fun myLoginSuccess(response: LoginResponseBean) {
 
-        if (response.dataBean != null) {
+        if (response.data != null) {
             MySpUtil.instance.getInstance(this).putBoolean("sign", true)
             MySpUtil.instance.getInstance(this).putString("name", de_login_phone.text.toString().trim())
             MySpUtil.instance.getInstance(this).putString("pass", de_login_password.text.toString().trim())
@@ -108,6 +108,5 @@ class LoginActivity
     override fun myLoginFail(s: String) {
         myToast("失败")
     }
-
 
 }

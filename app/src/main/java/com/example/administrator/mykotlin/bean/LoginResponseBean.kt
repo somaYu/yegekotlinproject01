@@ -12,7 +12,7 @@ import com.example.administrator.mykotlin.base.BaseResponseBean
 // 好高大上的bean对象
 data class LoginResponseBean(
 
-        var dataBean: DataBean
+        var data: DataBean
         , var errorMsg: String
         , var errorCode: Int
 
