@@ -1,10 +1,9 @@
 package com.example.administrator.mykotlin.net
 
+import com.example.administrator.mykotlin.bean.HomeListResponseBean
 import com.example.administrator.mykotlin.bean.LoginResponseBean
 import kotlinx.coroutines.experimental.Deferred
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 /**
  * @author wodemingziyouyidianchang
@@ -16,7 +15,7 @@ import retrofit2.http.POST
 // 标记类注解
 interface MyRetrofitInter {
 
-    // 注册接口
+    // 注册
     @POST("/user/register")
     @FormUrlEncoded
     fun regist(
@@ -26,7 +25,7 @@ interface MyRetrofitInter {
     ): Deferred<LoginResponseBean>
 
 
-    // 登陆接口
+    // 登陆
     @POST("/user/login")
     @FormUrlEncoded
     fun login(
@@ -34,5 +33,11 @@ interface MyRetrofitInter {
             , @Field("password") password: String
     )
             : Deferred<LoginResponseBean>
+
+    // 首页
+    @GET("article/list/{page}/json")
+    fun getHomeList(
+            @Path("page") page: Int
+    ): Deferred<HomeListResponseBean>
 
 }
