@@ -36,10 +36,7 @@ interface MyRetrofitInter {
 
     /**
      * 首页数据
-     * http://www.wanandroid.com/article/list/0/json
-     * @param page page
      */
-
     @GET("/article/list/{page}/json")
     fun getHomeList(
             @Path("page") page: Int

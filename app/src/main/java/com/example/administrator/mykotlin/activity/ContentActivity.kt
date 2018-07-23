@@ -6,8 +6,8 @@ import android.view.View
 import com.example.administrator.mykotlin.R
 import com.example.administrator.mykotlin.adapter.MyViewPagerAdapter
 import com.example.administrator.mykotlin.base.BaseActivity
-import com.example.administrator.mykotlin.fragment.IHomeFragment
-import com.example.administrator.mykotlin.fragment.ITypeFragment
+import com.example.administrator.mykotlin.fragment.HomeFragment
+import com.example.administrator.mykotlin.fragment.TypeFragment
 import com.example.administrator.mykotlin.persenter.ContentPresenter
 import com.example.administrator.mykotlin.util.MySpUtil
 import kotlinx.android.synthetic.main.activity_content.*
@@ -18,39 +18,51 @@ import kotlinx.android.synthetic.main.include_content.*
  */
 class ContentActivity : BaseActivity<ContentPresenter>() {
 
-    var titles=ArrayList<String>()
-    var fragmes=ArrayList<Fragment>()
-    override fun getMyViewId(): Int = R.layout.activity_content
+    var list1 = ArrayList<String>()
+    var list2 = ArrayList<Fragment>()
 
+    override fun getMyViewId(): Int = R.layout.activity_content
 
     override fun initMyPresenter() {
     }
 
     override fun initMyData() {
         //toolbar设置标题
-        toolbar.title="Kotlin Demo"
+        toolbar.title = "Kotlin Demo"
         //toolbar设置长actionbar
         setSupportActionBar(toolbar)
-        titles.add("首页")
-        titles.add("知识体系")
-        fragmes.add(IHomeFragment())
-        fragmes.add(ITypeFragment())
-        viewpager.adapter= MyViewPagerAdapter(supportFragmentManager,fragmes,titles)
+
+        list1.add("首页")
+        list1.add("知识体系")
+
+        list2.add(HomeFragment())
+        list2.add(TypeFragment())
+
+        viewpager.adapter = MyViewPagerAdapter(
+                supportFragmentManager
+                , list1
+                , list2)
+
         tablayout.setupWithViewPager(viewpager)
         //设置用户名
-        name.text = MySpUtil.instance.getInstance(this).getString("name", "")
+        name.text = MySpUtil.instance.getInstance(this)
+                .getString("name", "")
         //退出登陆
         exit.setOnClickListener(onClickListener)
     }
 
-    private var onClickListener= View.OnClickListener {
-        View->when(View.id){
-        R.id.exit->{
-            startActivity(Intent(this@ContentActivity, LoginActivity::class.java))
-            MySpUtil.instance.getInstance(this@ContentActivity).putBoolean("sign", false)
-            finish()
+    private var onClickListener = View.OnClickListener { View ->
+        when (View.id) {
+            R.id.exit -> {
+
+                startActivity(Intent(this@ContentActivity, LoginActivity::class.java))
+
+                MySpUtil.instance.getInstance(this@ContentActivity)
+                        .putBoolean("sign", false)
+
+                finish()
+            }
         }
-    }
 
     }
 }

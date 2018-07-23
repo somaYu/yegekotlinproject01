@@ -14,15 +14,20 @@ import top.jowanxu.wanandroidclient.bean.HomeListResponseBean
 class HomeRequest {
 
     var homeList: Deferred<HomeListResponseBean>? = null
-    fun getHome(homePresenter:HomePresenter,page:Int){
+
+    fun getHome(p: HomePresenter, page: Int) {
         async(UI) {
+
             homeList = MyRetrofitHelper.instance.interR.getHomeList(page)
-                var result=homeList?.await()
-                result?:let{
-                    homePresenter.loginFail(MyConstant.RESULT_NULL)
+            var result = homeList?.await()
+
+            result ?: let {
+                p.loginFail(MyConstant.RESULT_NULL)
                 return@async
             }
-            homePresenter.loginSuccess(result)
+
+            p.loginSuccess(result)
         }
     }
+
 }

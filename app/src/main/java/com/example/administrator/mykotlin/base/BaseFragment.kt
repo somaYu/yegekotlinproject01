@@ -14,36 +14,40 @@ import android.widget.LinearLayout
  */
 abstract class BaseFragment<T : BasePresenter> : Fragment() {
     var mPresenter: T? = null
-    var progress: ProgressDialog? = null
+    var pd: ProgressDialog? = null
     // 呵呵呵呵呵
 //    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return getMyView(inflater, container)
+        return initMyFragmentView(inflater, container)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        progress = ProgressDialog(context)
-//        progress.setProgressStyle(ProgressDialog.)
-        val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-        layoutParams.gravity = Gravity.TOP
+        // 居然直接就context
+        pd = ProgressDialog(context)
+//        pd.setProgressStyle(ProgressDialog.)
+        val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT
+                , LinearLayout.LayoutParams.WRAP_CONTENT)
 
-        initPresneter()
-        initDatas()
+        params.gravity = Gravity.TOP
+
+        initMyPresneter()
+        initMyDatas()
     }
 
-    abstract fun getMyView(inflater: LayoutInflater?, container: ViewGroup?): View?
+    abstract fun initMyFragmentView(inflater: LayoutInflater?, container: ViewGroup?): View?
 
-    abstract fun initDatas()
+    abstract fun initMyDatas()
 
-    abstract fun initPresneter()
+    abstract fun initMyPresneter()
 
-    fun show() {
-        progress?.show()
+    fun myShow() {
+        pd?.show()
     }
 
-    fun hidden() {
-        progress?.dismiss()
+    fun myHide() {
+        pd?.dismiss()
     }
 
 }

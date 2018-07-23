@@ -1,6 +1,6 @@
 package top.jowanxu.wanandroidclient.bean
 
-data class Data(
+data class HomeListData(
     var offset: Int,
     var size: Int,
     var total: Int,

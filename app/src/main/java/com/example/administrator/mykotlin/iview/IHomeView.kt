@@ -7,5 +7,5 @@ import top.jowanxu.wanandroidclient.bean.HomeListResponseBean
  */
 interface IHomeView {
     fun homeSuccess(result: HomeListResponseBean)
-    fun homeFaile(meass:String?)
+    fun homeFail(s: String?)
 }

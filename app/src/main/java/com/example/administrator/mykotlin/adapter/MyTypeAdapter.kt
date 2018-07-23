@@ -9,7 +9,7 @@ import top.jowanxu.wanandroidclient.bean.TreeListResponseBean
 /**
  * Created by Administrator on 2018\4\13 0013.
  */
-class TypeAdapter(var context: FragmentActivity?, var id: Int, var datas: ArrayList<TreeListResponseBean.Data>) : CommonAdapter<TreeListResponseBean.Data>(context, id, datas) {
+class MyTypeAdapter(var context: FragmentActivity?, var id: Int, var datas: ArrayList<TreeListResponseBean.Data>) : CommonAdapter<TreeListResponseBean.Data>(context, id, datas) {
     override fun convert(holder: ViewHolder?, t: TreeListResponseBean.Data?, position: Int) {
             holder?.setText(R.id.content,t?.name)
     }
