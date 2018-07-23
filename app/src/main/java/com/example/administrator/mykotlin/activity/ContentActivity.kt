@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.include_content.*
  * @since 2018/7/19 9:43
  */
 
-// 呵呵
 class ContentActivity : BaseActivity<BasePresenter>() {
 
     var list1 = ArrayList<String>()
