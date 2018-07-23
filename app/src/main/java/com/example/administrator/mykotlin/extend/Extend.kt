@@ -49,33 +49,72 @@ fun hehe(list: List<String>) {
 // 呵呵呵
 fun encodeMyCookie(list: List<String>): String {
 
-    var sb = StringBuilder()
-    var set = HashSet<String>()
+    val sb = StringBuilder()
+    val set = HashSet<String>()
 
-    // kotlin里的方法
-    list.map {
-
+    list.map { it ->
         it.split(";".toRegex())
-
+                .dropLastWhile {
+                    it.isEmpty()
+                }
+                .toTypedArray()
     }
             .forEach {
-
-                // 这特么什么写法
-                it.forEach {
-                    set.add(it)
+                it.filterNot {
+                    set.contains(it)
                 }
-
+                        .forEach {
+                            set.add(it)
+                        }
             }
 
     val it = set.iterator()
-
     while (it.hasNext()) {
         val next = it.next()
+        sb.append(next).append(";")
+    }
 
-        sb.append(next)
+    val last = sb.lastIndexOf(";")
+    if (sb.length - 1 == last) {
+        sb.deleteCharAt(last)
     }
 
     return sb.toString()
+
+//    var sb = StringBuilder()
+//    var set = HashSet<String>()
+//
+//    // kotlin里的方法
+//    list.map {
+//        it.split(";".toRegex())
+//                .dropLastWhile {
+//                    it.isEmpty()
+//                }
+//                // 转化为数组
+//                .toTypedArray()
+//    }
+//            .forEach {
+//                it.filterNot {
+//                    set.contains(it)
+//                }
+//                        .forEach {
+//                            set.add(it)
+//                        }
+//
+//            }
+//
+//    val it = set.iterator()
+//    while (it.hasNext()) {
+//        val next = it.next()
+//        sb.append(next).append(";")
+//    }
+//
+//    val last = sb.lastIndexOf(";")
+//    if (sb.length - 1 == last) {
+//        sb.deleteCharAt(last)
+//    }
+//
+//    return sb.toString()
 
 }
 

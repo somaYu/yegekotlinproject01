@@ -53,7 +53,8 @@ class LoginRequest() {
 
             val interR = MyRetrofitHelper.instance.interR
             loginAsync = interR.login(username, password)
-            val result = loginAsync!!.await()
+//            val result = loginAsync!!.await()
+            val result = loginAsync?.await()
 
             result ?: let {
                 p.loginFail(MyConstant.RESULT_NULL)

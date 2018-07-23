@@ -1,5 +1,6 @@
 package com.example.administrator.mykotlin.net
 
+import android.util.Log
 import com.example.administrator.mykotlin.constant.MyConstant
 import com.example.administrator.mykotlin.extend.encodeMyCookie
 import com.example.administrator.mykotlin.util.MyPreference
@@ -112,7 +113,6 @@ class MyRetrofitHelper private constructor() {
 
         var retrofit = Retrofit.Builder()
                 .apply {
-
                     baseUrl(url)
                     client(builder.build())
                     addConverterFactory(GsonConverterFactory.create())
@@ -124,21 +124,47 @@ class MyRetrofitHelper private constructor() {
 
     }
 
-    fun saveMyCookie(
-            s1: String?
-            , s2: String?
-            , cookies: String
-    ) {
-
-        // 这非空判断把人都看醉了
+    @Suppress("ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE")
+    private fun saveMyCookie(s1: String?, s2: String?, cookies: String) {
         s1 ?: return
-        var spS1: String by MyPreference(s1, cookies)
-        spS1 = cookies
-
+        var spUrl: String by MyPreference(s1, cookies)
+        @Suppress("UNUSED_VALUE")
+        spUrl = cookies
         s2 ?: return
-        var spS2: String by MyPreference(s2, cookies)
-        spS2 = cookies
+        var spDomain: String by MyPreference(s2, cookies)
+        @Suppress("UNUSED_VALUE")
+        spDomain = cookies
 
+        Log.e("yy", "呵呵");
     }
+
+//    fun saveMyCookie(
+//            s1: String?
+//            , s2: String?
+//            , cookies: String
+//    ) {
+//
+//        // 这非空判断把人都看醉了
+//
+//        s1 ?: return
+//        var spUrl: String by MyPreference(s1, cookies)
+//        @Suppress("UNUSED_VALUE")
+//        spUrl = cookies
+//        s2 ?: return
+//        var spDomain: String by MyPreference(s2, cookies)
+//        @Suppress("UNUSED_VALUE")
+//        spDomain = cookies
+//
+//        Log.e("yy", "呵呵" );
+//
+////        s1 ?: return
+////        var spS1: String by MyPreference(s1, cookies)
+////        spS1 = cookies
+////
+////        s2 ?: return
+////        var spS2: String by MyPreference(s2, cookies)
+////        spS2 = cookies
+//
+//    }
 
 }
