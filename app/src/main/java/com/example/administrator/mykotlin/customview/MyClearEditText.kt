@@ -53,7 +53,7 @@ class MyClearEditText @JvmOverloads constructor(
         this.addTextChangedListener(this)
     }
 
-    // 意思也是能提到扩展函数里去咯？？？？？？？？？？？？？
+    // kotlin伴生对象
     // 还提供了个莫名其妙的静态方法
     // 返回值是Animation
     companion object {

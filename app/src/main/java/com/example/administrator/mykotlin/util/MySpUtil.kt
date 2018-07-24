@@ -16,6 +16,7 @@ class MySpUtil private constructor() {
     private var sp: SharedPreferences? = null
     private var editor: SharedPreferences.Editor? = null
 
+    // kotlin伴生对象
     companion object {
         // 并不是所有的val都能用var代替，比如单例
         val instance: MySpUtil by lazy { MySpUtil() }

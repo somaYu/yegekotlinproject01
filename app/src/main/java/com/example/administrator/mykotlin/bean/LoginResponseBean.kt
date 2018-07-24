@@ -10,6 +10,9 @@ import com.example.administrator.mykotlin.base.BaseResponseBean
 
 // 一个data关键字就代表了bean对象的意思？
 // 好高大上的bean对象
+
+// 最少需要一个参数
+// 所有参数必须标记val或var
 data class LoginResponseBean(
 
         var data: DataBean

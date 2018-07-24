@@ -28,7 +28,7 @@ class MyRetrofitHelper private constructor() {
     private val CONNECT_TIMEOUT = 30L
     private val READ_TIMEOUT = 10L
 
-    // kotlin单例就这么写
+    // kotlin伴生对象
     companion object {
 
         // 此处单例必须是val

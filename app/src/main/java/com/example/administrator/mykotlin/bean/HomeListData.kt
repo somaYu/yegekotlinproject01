@@ -7,7 +7,6 @@ package com.example.administrator.mykotlin.bean
  */
 
 data class HomeListData(
-
         var offset: Int
         , var size: Int
         , var total: Int
@@ -15,6 +14,5 @@ data class HomeListData(
         , var curPage: Int
         , var over: Boolean
         , var datas: ArrayList<Datas>?
-
 )
 

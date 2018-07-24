@@ -15,6 +15,7 @@ import kotlin.reflect.KProperty
 
 class MyPreference<T>(private val name: String, private val default: T) : ReadWriteProperty<Any?, T> {
 
+    // kotlin伴生对象
     companion object {
         // lateinit修饰符只能修饰不可空类型
         // 什么是延迟初始化属性？？？？？？？？？？？
