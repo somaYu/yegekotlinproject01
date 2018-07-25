@@ -43,6 +43,7 @@ dependencies {
 //    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.23.4"
 //    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.23.4"
 
+    // 协程相关
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.22"
 
