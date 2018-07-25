@@ -34,6 +34,7 @@ class MyPreference<T>(private val name: String, private val default: T) : ReadWr
         }
     }
 
+    // 委托属性必须实现的接口方法
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
         return setMyPreference(name, default)
     }

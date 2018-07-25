@@ -83,6 +83,7 @@ class MyRetrofitHelper private constructor() {
 
                         if (host.isNotEmpty()) {
 
+                            // kotlin中的所谓委托属性
                             val spDomain: String by MyPreference(host, "")
 
                             val cookie: String = if (spDomain.isNotEmpty()) spDomain else ""
