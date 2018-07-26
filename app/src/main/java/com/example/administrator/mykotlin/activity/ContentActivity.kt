@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.include_content.*
  * @version 1.0.0
  * @since 2018/7/19 9:43
  */
-
 // 改造之前备份
 class ContentActivity : BaseActivity<BasePresenter>() {
 
