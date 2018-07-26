@@ -19,12 +19,17 @@ class LoginRequest() {
     var loginAsync: Deferred<LoginResponseBean>? = null
 
     fun woqu() {
-        launch(CommonPool) {
-//        launch(CommonPool, CoroutineStart.DEFAULT, {
+        val job = launch(CommonPool) {
+            //        launch(CommonPool, CoroutineStart.DEFAULT, {
 
             delay(3000L, TimeUnit.MILLISECONDS)
             Log.e("yy", "hehe");
         }
+
+        // job是否活动
+        val b1 = job.isActive
+        // job是否结束
+        val b2 = job.isCompleted
 
     }
 
@@ -39,7 +44,7 @@ class LoginRequest() {
 
             var result = registAsync?.await()
 
-            // 大括号中的代码只有a不为空的时候才执行
+            // 前不为null才执行后面
             result ?: let {
                 p.registFail(MyConstant.RESULT_NULL)
                 return@async
